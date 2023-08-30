@@ -17,16 +17,16 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.springframework.data.util.Lazy;
+
 
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Table(
 
-    name = "Raffle",
-    uniqueConstraints =
-    @UniqueConstraint(columnNames = {"user_id", "item_id"})
+        name = "Raffle",
+        uniqueConstraints =
+        @UniqueConstraint(columnNames = {"user_id", "item_id"})
 
 )
 public class Raffle {
@@ -70,7 +70,7 @@ public class Raffle {
     @Builder
     public Raffle(int raffleCount, LocalDateTime raffleDrawDate,
 
-        User user, Item item, Section section) {
+                  User user, Item item, Section section) {
 
         this.raffleStatus = "false";
         this.raffleCount = raffleCount;
@@ -117,7 +117,6 @@ public class Raffle {
     public void winRaffleStatus(String newStatus) {
         this.raffleStatus = newStatus;
     }
-
 
 
 }

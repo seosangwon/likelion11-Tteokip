@@ -78,6 +78,7 @@ class RaffleServiceTest {
                     .userEmail(userEmail)
                     .userName("홍길동")
                     .gender('M')
+
                     .build();
             userRepository.save(user);
 

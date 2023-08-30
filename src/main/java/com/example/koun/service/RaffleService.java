@@ -1,6 +1,7 @@
 package com.example.koun.service;
 
 import com.example.koun.domain.*;
+import com.example.koun.dto.RaffleResultResponseDto;
 import com.example.koun.dto.RaffleSaveRequestDto;
 import com.example.koun.dto.RaffleFindResponseDto;
 import com.example.koun.repository.*;
@@ -11,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -30,9 +32,9 @@ public class RaffleService {
         User user = userRepository.findById(requestDto.getUserId())
                 .orElseThrow(
                         () -> new IllegalArgumentException("해당 사용자가 없습니다. id=" + requestDto.getUserId()));
-        Item item = itemRepository.findById(requestDto.getItemId())
+        Item item = itemRepository.findByItemName(requestDto.getItemName())
                 .orElseThrow(
-                        () -> new IllegalArgumentException("해당 상품이 없습니다. id=" + requestDto.getItemId()));
+                        () -> new IllegalArgumentException("해당 상품이 없습니다. id=" + requestDto.getItemName()));
         Section section = sectionRepository.findById(requestDto.getSectionId())
                 .orElseThrow(
                         () -> new IllegalArgumentException("해당 섹션이 없습니다. id=" + requestDto.getSectionId()));
@@ -41,6 +43,10 @@ public class RaffleService {
 
         return raffleRepository.save(raffle).getId();
     }
+
+
+
+
 
 
     //래플 id로 래플 조회
@@ -62,6 +68,13 @@ public class RaffleService {
     }
 
 
+
+
+
+
+
+
+
     //raffleStatus 업데이트
     @Transactional
     public void updateRaffleStatus(Long raffleId, String newStatus) {
@@ -73,6 +86,7 @@ public class RaffleService {
 
 
     //user가 응모한 래플 리스트 조회
+    @Transactional(readOnly = true)
     public List<RaffleFindResponseDto> findRafflesByUserId(Long userId) {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new IllegalArgumentException("해당 사용자가 없습니다. id=" + userId));
@@ -81,14 +95,15 @@ public class RaffleService {
 
         // Raffle 엔티티 리스트를 RaffleResponseDto 리스트로 변환
         List<RaffleFindResponseDto> raffleFindResponseDtos = raffles.stream()
-                .map(RaffleFindResponseDto::new)
+            .map(RaffleFindResponseDto::new)
                 .collect(Collectors.toList());
 
         return raffleFindResponseDtos;
     }
 
     //콘서트에 응모된 래플 리스트 조회
-    public List<RaffleFindResponseDto> findRaffleByItemId(Long itemId) {
+    @Transactional(readOnly = true)
+    public List<RaffleFindResponseDto> findRafflesByItemId(Long itemId) {
         Item item = itemRepository.findById(itemId)
                 .orElseThrow(() -> new IllegalArgumentException("해당 콘서트가 없습니다, id=" + itemId));
 
@@ -103,7 +118,8 @@ public class RaffleService {
     }
 
     //콘서트 구역에 응모된 리스트 조회
-    public List<RaffleFindResponseDto> findRaffleBySectionId(Long sectionId) {
+    @Transactional(readOnly = true)
+    public List<RaffleFindResponseDto> findRafflesBySectionId(Long sectionId) {
         Section section = sectionRepository.findById(sectionId)
                 .orElseThrow(() -> new IllegalArgumentException("해당 콘서트 구역이 없습니다, id=" + sectionId));
 
@@ -114,6 +130,39 @@ public class RaffleService {
                 .collect(Collectors.toList());
         return raffleFindResponseDtos;
 
+
+    }
+
+    //응모 결과 팝업 조회
+    @Transactional(readOnly = true)
+    public RaffleResultResponseDto findRaffleResult(Long id) {
+        Raffle entity = raffleRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("해당 응모가 없습니다. id=" + id));
+        Section section = sectionRepository.findById(entity.getSection().getId())
+                .orElseThrow(() -> new IllegalArgumentException("해당 구역이 없습니다 id=" + id));
+        Item item = itemRepository.findById(entity.getItem().getId())
+                .orElseThrow(() -> new IllegalArgumentException("해당 구역이 없습니다 id=" + id));
+
+        int seatQuantity = section.getSeatQuantity();
+        int sectionTotalCount = section.findSectionTotalCount();
+        double sectionRate = (double) seatQuantity / sectionTotalCount;
+        sectionRate = Math.round(sectionRate * 10)*10;
+        int itemTotalCount = item.findItemTotalCount();
+
+        RaffleResultResponseDto responseDto = RaffleResultResponseDto.builder()
+                .id(id)
+                .itemName(item.getItemName())
+                .raffleStatus(entity.getRaffleStatus())
+                .sectionName(section.getSectionName())
+                .itemTotalCount(itemTotalCount)
+                .sectionTotalCount(sectionTotalCount)
+                .sectionRate(sectionRate)
+                .price(section.getPrice())
+                .raffleCount(entity.getRaffleCount())
+                .dateTime(item.getDateTime())
+                .build();
+
+        return responseDto;
 
     }
 
@@ -128,11 +177,12 @@ public class RaffleService {
         raffle.getSection().getRaffles().remove(raffle);
 
 
+
         raffleRepository.delete(raffle);
     }
 
 
-    //랜덤으로 응모 추첨
+    //랜덤으로 응모 추첨 - 구역1개
     @Transactional
     public void drawRaffleForSection(Long sectionId) {
         Section section = sectionRepository.findById(sectionId)
@@ -156,12 +206,17 @@ public class RaffleService {
         }
     }
 
+    // 랜덤으로 응모 추첨 - 아이템
+    @Transactional
+    public void drawRaffleForItem(Long itemId) {
+        Item item = itemRepository.findById(itemId)
+                .orElseThrow(() -> new IllegalArgumentException("해당 콘서트가 없습니다, id=" + itemId));
 
-
-
-
-
-
+        // Item에 연결된 모든 Section들에 대해 응모 추첨을 수행
+        for (Section section : item.getSections()) {
+            drawRaffleForSection(section.getId());
+        }
+    }
 
 
 }

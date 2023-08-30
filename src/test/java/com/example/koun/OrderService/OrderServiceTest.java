@@ -32,7 +32,6 @@ public class OrderServiceTest {
                 .userName("sangwon")
                 .userEmail("zmdk1205@naver.com")
                 .gender('M')
-
                 .build();
         userRepository.save(user1);
 

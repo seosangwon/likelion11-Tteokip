@@ -3,11 +3,9 @@ package com.example.koun.RaffleService;
 import com.example.koun.domain.*;
 import com.example.koun.dto.RaffleSaveRequestDto;
 import com.example.koun.dto.RaffleFindResponseDto;
-
 import com.example.koun.repository.ItemRepository;
 import com.example.koun.repository.SectionRepository;
 import com.example.koun.repository.UserRepository;
-
 import com.example.koun.service.RaffleService;
 
 import java.time.LocalDateTime;
@@ -40,7 +38,6 @@ public class RaffleServiceTest {
         User user = User.builder()
                 .userName("sangwon")
                 .userEmail("zmdk12055@naver.com")
-                .gender('M')
                 .build();
         // user 필드 설정
         userRepository.save(user);
@@ -48,15 +45,11 @@ public class RaffleServiceTest {
         User user1 = User.builder()
                 .userName("miyeon")
                 .userEmail("aldus0123@naver.com")
-                .gender('M')
-
                 .build();
         userRepository.save(user1);
         User user2 = User.builder()
                 .userName("jiyoen")
                 .userEmail("al1231233@naver.com")
-                .gender('M')
-
                 .build();
         userRepository.save(user2);
 
@@ -158,11 +151,12 @@ public class RaffleServiceTest {
         // 3. Raffle 조회
         //     RaffleResponseDto raffleResponseDto = raffleService.findRaffle(raffleId);
         List<RaffleFindResponseDto> userRaffles = raffleService.findRafflesByUserId(user.getId());
-        List<RaffleFindResponseDto> itemRaffles = raffleService.findRaffleByItemId(item1.getId());
-        List<RaffleFindResponseDto> sectionRaffles = raffleService.findRaffleBySectionId((item1.getId()));
+        List<RaffleFindResponseDto> itemRaffles = raffleService.findRafflesByItemId(item1.getId());
+        List<RaffleFindResponseDto> sectionRaffles = raffleService.findRafflesBySectionId((item1.getId()));
         List<Section> sections = item1.getSections();
 
 
+        System.out.println("유저 래플 응모 테스트:" + user.getRaffles());
         System.out.println("item1의 section들 "+ sections);
         System.out.println("유저 래플 응모 테스트:" + userRaffles);
         System.out.println("콘서트 래플 응모 테스트:" + itemRaffles);
@@ -172,13 +166,21 @@ public class RaffleServiceTest {
         //user sangwon의 item - 브루노마스
         RaffleFindResponseDto findResponseDto = raffleService.findRaffleByUserIdAndItemId(user.getId(), item1.getId());
 
-        System.out.println("찾아온 리스판스Dto"+findResponseDto);
+        System.out.println("찾아온 리스판스Dto 곧 삭제될거임"+findResponseDto);
 
         raffleService.deleteRaffle(findResponseDto.getId());
+        System.out.println("11111111111111");
 
-        System.out.println("유저 래플 응모 테스트:" + userRaffles);
-        System.out.println("콘서트 래플 응모 테스트:" + itemRaffles);
-        System.out.println("iem1의 section 테스트"+ sectionRaffles);
+
+
+        List<RaffleFindResponseDto> userRaffles1 = raffleService.findRafflesByUserId(user.getId());
+        List<RaffleFindResponseDto> itemRaffles1 = raffleService.findRafflesByItemId(item1.getId());
+        List<RaffleFindResponseDto> sectionRaffles1 = raffleService.findRafflesBySectionId((item1.getId()));
+
+        System.out.println("유저 래플 응모 테스트:" + user.getRaffles());
+        System.out.println("유저의 불러온 래플즈"+ userRaffles1);
+        System.out.println("콘서트 래플 응모 테스트:" + itemRaffles1);
+        System.out.println("iem1의 section 테스트"+ sectionRaffles1);
 
 
 

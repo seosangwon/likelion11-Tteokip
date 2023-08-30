@@ -41,17 +41,19 @@ public class LoginController {
 
         RestTemplate rt = new RestTemplate();
 
+        //Header
         HttpHeaders headers = new org.springframework.http.HttpHeaders();
         headers.add("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
 
+        //Body
         MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
         params.add("grant_type", "authorization_code");
         params.add("client_id", "2cf364356a3329e6b0fca033d6447fbd");
         params.add("redirect_uri", "http://localhost:8080/loginRedirect");
         params.add("code", code);
 
+        //HTTP 객체
         HttpEntity<MultiValueMap<String, String>> kakaoTokenRequest = new HttpEntity<>(params,
-
                 headers);
 
         ResponseEntity<String> response = rt.exchange(

@@ -1,34 +1,30 @@
 package com.example.koun.dto;
 
 import com.example.koun.domain.*;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 @Data
+@NoArgsConstructor
 public class RaffleSaveRequestDto {
     private int raffleCount;
-    private LocalDateTime raffleDrawDate;
+    private String raffleDrawDate;
     private Long userId;
-    private Long itemId;
+    private String itemName;
     private Long sectionId;
 
-    @Builder
-    public RaffleSaveRequestDto( int raffleCount, String raffleDrawDate,
-                                Long userId, Long itemId, Long sectionId) {
-        this.raffleCount = raffleCount;
-        this.raffleDrawDate = convertToDateTime(raffleDrawDate);
-        this.userId = userId;
-        this.itemId = itemId;
-        this.sectionId = sectionId;
-    }
+
+
 
     public Raffle toEntity(User user, Item item, Section section) {
         return Raffle.builder()
                 .raffleCount(raffleCount)
-                .raffleDrawDate(raffleDrawDate)
+                .raffleDrawDate(convertToDateTime(raffleDrawDate))
                 .user(user)
                 .item(item)
                 .section(section)

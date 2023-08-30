@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raffle Result</title>
+    <!-- 필요한 CSS 파일을 여기에 추가하세요 -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- axios 라이브러리를 CDN에서 불러옵니다 -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+
+<!-- 이전에 주어진 코드 -->
+<!-- 응모결과조회 -->
+<div class="box">
+    <p>추첨하고 싶은 콘서트 제목을 입력하세요</p>
+    <input id="title" type="text" name="itemName" />
+    <button id="resultBtn">결과실행</button>
+</div>
+<!-- <a href="getBoardList.do">글 목록 가기</a> -->
+
+<!-- 자바스크립트 코드 -->
+
+<script>
+    const btn = document.getElementById("resultBtn");
+    const result = document.getElementById("result");
+    const title = document.getElementById("title");
+
+    btn.addEventListener("click", function () {
+        axios.post("/api/admin/raffle/draw/item", {
+            itemName: title.value
+        })
+            .then(function (response) {
+                console.log(response);
+                // 결과를 화면에 표시하는 코드를 여기에 추가할 수 있습니다.
+            }).catch(function (error) {
+            console.log(error);
+        })
+    });
+</script>
+
+</body>
+
+</html>

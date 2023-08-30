@@ -1,0 +1,368 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Pretendard';
+    list-style: none;
+}
+
+:root {
+
+    /*Color*/
+    --color-main-green: #26DDB1;
+    --color-main-gray: #8C9091;
+    --color-main-white: #FFFFFF;
+    --color-main-black: #3D3B3B;
+
+    /*Font size*/
+    --font-large: 48px;
+    --font-semi-large: 30px;
+    --font-medium: 28px;
+    --font-regular: 18px;
+    --font-small: 16px;
+    --font-micro: 14px;
+}
+
+/*nav*/
+
+.navbar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0 10px;
+    color: var(--color-main-gray);
+    border: 1px solid var(--color-main-white);
+    box-shadow: 0 2px 2px -2px #b4b4b4;
+    z-index: 1;
+}
+
+.logoImg {
+    width: 110px;
+    height: auto;
+}
+
+.navbar__menu {
+    margin-left: 20%;
+    display: flex;
+}
+
+.navbar__menu__item {
+    font-size: var(--font-small); /*micro->small로 변경*/
+    padding: 3px 10px;
+}
+
+.navbar__menu li:hover {
+    color: var(--color-main-black);
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/*main container*/
+
+.mainpage {
+    display: flex;
+    justify-content: center;
+    z-index: 0;
+}
+
+.header {
+    position: relative;
+    display: table-cell;
+    width: 300px;
+    background-color: #fff;
+    box-shadow: 4px 1px 8px -3px #c9c9c9;
+    vertical-align: top;
+    margin-top: 1px;
+}
+
+/*왼쪽 유저정보블록*/
+
+.profile_area, .header_left {
+    padding: 0 39px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+}
+
+.profile_area {
+    padding: 50px 50px 20px 0;
+    margin: 30px 30px;
+    box-shadow: 0 2px 2px -2px #b4b4b4;
+
+}
+
+.profile {
+    display: flex;
+    align-items: baseline;
+    padding-bottom: 10px;
+}
+
+.useid  {
+    color: #3d3b3b;
+    font-size: var(--font-medium);
+}
+
+.designation, .mention{
+    color: #8C9091;
+}
+
+.designation {
+    padding-left: 10px;
+}
+
+.left_menu {
+    display: grid;
+}
+
+/*정보 수정 버튼*/
+
+.btn_edit {
+    float: right;
+    padding: 1px 6px;
+    border: 1px solid #26ddb1;
+    border-radius: 10px;
+    background-color: white;
+    color: #26ddb1;
+}
+
+.left_item {
+    display: flex;
+    margin: 5px;
+    align-items: center;
+
+}
+
+.item_text {
+    padding: 0 5px;
+}
+
+/*메인 확인 창*/
+
+.content {
+    padding: 70px 30px;
+    margin-left: 30px;
+}
+
+.reservDetail_box, .liked_box {
+    display: block;
+    margin: 30px;
+    border: 0.1px solid white;
+    border-radius: 8px;
+    padding: 10px 30px;
+    box-shadow: 0 0 2px 0 #b4b4b4;
+
+
+
+}
+
+.title_text, .likedtitle_text {
+    color: #3d3b3b;
+    font-weight: normal;
+    padding: 10px;
+    border-bottom: 0.5px solid #26ddb1;
+}
+
+/*여기까지 본문nev 공통*/
+
+/*여기부터 페이지네이션 되는 예매내역*/
+
+.account_row {
+    padding: 10px;
+}
+
+.itemNev, .itemBox {
+    display: flex;
+}
+
+.itemNev {
+    margin: 5px 0;
+    padding-bottom: 5px;
+    box-shadow: 0 2px 2px -2px #b4b4b4;
+
+}
+
+
+.nevText {
+    padding: 5px 10px;
+    text-align: center;
+    vertical-align: center;
+}
+
+.itemBox {
+    align-items: center;
+    vertical-align: middle;
+}
+
+
+.reserveDate_itemBox, .post_number {
+    padding: 0 18px 0 0;
+
+}
+
+.info_itemBox {
+    display: flex;
+    margin: 10px 0;
+}
+
+.info_itemBox:hover {
+    cursor: pointer;
+}
+
+.posterImg {
+    width: 70px;
+    margin-right: 10px;
+}
+
+.info_itemText {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding-bottom: 20px;
+}
+.info_title {
+    color: #3d3b3b;
+    font-size: large;
+    font-weight: bold;
+    padding-top: 20px;
+}
+
+
+.info_detail {
+    display: flex;
+    font-size: var(--font-small);
+    color: #6A6D78;
+    padding-bottom: 10px;
+}
+
+.info_bar {
+    margin: 0 3px;
+}
+
+.itemText, .postedText {
+    text-align: center;
+    font-size: small;
+}
+
+/*간격 조정*/
+
+#dayInfo, #currentInfo, #cancelInfo, #numInfo, #currentInfo2, #applyBtn {
+    flex: 1;
+}
+
+.reservDetail_box, .current_itemBox, .cancel_itemBox, .post_number, .apply_itemBox {
+    flex: 1;
+}
+
+
+#concertInfo, #concertInfo2 {
+    flex: 3;
+}
+.info_itemBox {
+    flex: 3;
+}
+
+/*class합쳐서 한 번에 정렬*/
+
+
+.current_itemBox, .cancel_itemBox, .apply_itemBox {
+    text-align: center;
+}
+
+
+.cancelBtn, .reservBtn, .result_button{
+    padding: 3px 15px;
+    border: 1px solid var(--color-main-green);
+    border-radius: 5px;
+    background-color: #26ddb1;
+    color: white;
+}
+
+.cancelBtn:hover, .reservBtn:hover, .result_button:hover {
+    cursor: pointer;
+    box-shadow: 0 0 2px 0 var(--color-main-gray);
+}
+
+
+.numberItemBox {
+    margin: 30px 40px;
+}
+
+
+.reservBtn_end {
+    padding: 3px 15px;
+    border: 1px solid white;
+    border-radius: 5px;
+    background-color: #b4b4b4;
+    color: white;
+}
+
+
+.result_button {
+    padding: 3px 15px;
+    border: 1px solid var(--color-main-green);
+    border-radius: 5px;
+    background-color: #26ddb1;
+    color: white;
+}
+
+.end_button {
+    padding: 3px 15px;
+    border: 1px solid white;
+    border-radius: 5px;
+    background-color: #b4b4b4;
+    color: white;
+}
+
+/*페이지네이션*/
+
+.pagination-container {
+    display: flex;
+    justify-content: center;
+
+}
+
+
+.prev-button, .prev-button2,.next-button, .next-button2 {
+    cursor: pointer;
+    margin: 0 10px;
+}
+
+.number-button, .number-button2 {
+    cursor: pointer;
+    color: #b4b4b4;
+}
+
+.selected {
+    font-weight: 800;
+    font-size: 1.1rem;
+    color: var(--color-main-green)
+}
+
+/*반응형*/
+
+@media screen and (max-width: 800px) {
+
+    .header {
+        display: none;
+    }
+
+    .navbar__menu{
+        margin: 0;
+        padding-left: 250px;
+    }
+
+    .navbar__menu__item{
+        font-size: var(--font-micro);
+
+    }
+
+    .navbar__logo{
+        padding-left: 60px;
+    }
+
+
+
+    .info_detail {
+        white-space: nowrap;
+        font-size: var(--font-micro);
+    }
+
+}

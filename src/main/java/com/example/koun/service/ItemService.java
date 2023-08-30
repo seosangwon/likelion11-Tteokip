@@ -5,8 +5,10 @@ import com.example.koun.dto.ItemRequestDto;
 import com.example.koun.dto.ItemResponseDto;
 //import com.example.koun.dto.ItemUpdateRequestDto;
 import com.example.koun.repository.ItemRepository;
+
 import java.util.List;
 import java.util.stream.Collectors;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -29,7 +31,7 @@ public class ItemService {
     @Transactional(readOnly = true)
     public ItemResponseDto findById(Long itemId) {
         Item item = itemRepository.findById(itemId)
-            .orElseThrow(() -> new IllegalArgumentException("해당 상품이 없습니다. id=" + itemId));
+                .orElseThrow(() -> new IllegalArgumentException("해당 상품이 없습니다. id=" + itemId));
         return new ItemResponseDto(item); // Item 엔티티를 ItemDto로 변환하여 반환
     }
 
@@ -47,16 +49,16 @@ public class ItemService {
     // 아이템 삭제
     public void deleteItem(Long itemId) {
         Item item = itemRepository.findById(itemId)
-            .orElseThrow(() -> new IllegalArgumentException("해당 상품이 없습니다. id=" + itemId));
+                .orElseThrow(() -> new IllegalArgumentException("해당 상품이 없습니다. id=" + itemId));
         itemRepository.delete(item);
     }
 
 
     // 아이템 이름으로 조회
     @Transactional(readOnly = true)
-    public ItemResponseDto  findItemsByName(String itemName) {
+    public ItemResponseDto findItemsByName(String itemName) {
         Item item = itemRepository.findByItemName(itemName)
-            .orElseThrow(() -> new IllegalArgumentException("해당 아이템이 없습니다 name" + itemName));
+                .orElseThrow(() -> new IllegalArgumentException("해당 아이템이 없습니다 name" + itemName));
         return new ItemResponseDto(item);
     }
 
@@ -65,8 +67,8 @@ public class ItemService {
     public List<ItemResponseDto> getAllItems() {
         List<Item> items = itemRepository.findAll();
         return items.stream()
-            .map(ItemResponseDto::new)
-            .collect(Collectors.toList());
+                .map(ItemResponseDto::new)
+                .collect(Collectors.toList());
     }
 
 

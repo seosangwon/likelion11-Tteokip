@@ -40,16 +40,18 @@ public class ItemAPIController {
         itemService.deleteItem(itemId);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
     // 아이템 이름으로 조회
     @GetMapping("/search")
     public ResponseEntity<ItemResponseDto> searchItemsByName(@RequestParam String itemName) {
         ItemResponseDto item = itemService.findItemsByName(itemName);
-        if (item != null) {
-            return new ResponseEntity<>(item, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
+//        if (item != null) {
+//            return new ResponseEntity<>(item, HttpStatus.OK);
+//        } else {정
+        return new ResponseEntity<>(item, HttpStatus.OK);
     }
+
+
     // 모든 아이템 조회
     @GetMapping("/all")
     public ResponseEntity<List<ItemResponseDto>> getAllItems() {

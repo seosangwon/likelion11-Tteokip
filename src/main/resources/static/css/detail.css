@@ -1,0 +1,435 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Pretendard';
+    list-style: none;
+}
+
+:root {
+
+    /*Color*/
+    --color-main-green: #26DDB1;
+    --color-main-gray: #8C9091;
+    --color-main-white: #FFFFFF;
+    --color-main-black: #3D3B3B;
+
+    /*Font size*/
+    --font-large: 48px;
+    --font-semi-large: 30px;
+    --font-medium: 28px;
+    --font-regular: 18px;
+    --font-small: 16px;
+    --font-micro: 14px;
+}
+
+/*nav*/
+
+.navbar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0 10px;
+    color: var(--color-main-gray);
+    border: 1px solid var(--color-main-white);
+    box-shadow: 0 2px 2px -2px #b4b4b4;
+}
+
+.logoImg {
+    width: 110px;
+    height:auto
+}
+
+.navbar__menu {
+    margin-left: 20%;
+    display: flex;
+}
+
+.navbar__menu li:hover {
+    color: var(--color-main-black);
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.navbar__menu__item {
+    font-size: var(--font-small); /*micro->small로 변경*/
+    padding: 3px 10px;
+}
+
+/*header_progression*/
+
+.header {
+    display: flex;
+    justify-content: flex-end;
+    padding: 3% 12%;
+}
+
+.prog_nav {
+    justify-content: space-around;
+}
+
+.progitemWrapper {
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+    margin: 0 10px;
+    padding-top: 10px;
+    font-size: var(--font-micro);
+    color: var(--color-main-gray);
+}
+
+.progitemText {
+    padding: 0 10px;
+    list-style: none;
+}
+
+#current {
+    color: var(--color-main-black);
+    font-weight: bold;
+}
+
+.bar {
+    padding: 0 10px;
+    list-style: none;
+}
+
+/*main_title*/
+
+.contents {
+    margin: 0 12%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding-bottom: 10%;
+}
+
+.summaryTop {
+    display: flex;
+    flex-direction: column;
+}
+
+.title {
+    display: flex;
+
+}
+.d-day, .prdTitle{
+    margin: 0 5px;
+    font-weight: bold;
+    font-size: var(--font-semi-large);
+}
+
+
+.titleinfo {
+    display: flex;
+    margin: 4px 0;
+    padding-left: 0;
+    font-weight: normal;
+}
+
+.dateinfo, .section {
+    margin-right: 10px;
+}
+
+
+/*main_container*/
+
+.productWrapper {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    border-top: 2px solid var(--color-main-black);
+}
+
+/*main_poster*/
+
+.posterBox {
+    position: relative;
+    margin-left: 10px;
+    padding: 0;
+    width: 300px;
+    height: 401px;
+}
+
+.posterBoxImage {
+    display: inline-block;
+    width: 300px;
+    margin-top: 8%;
+}
+
+.circle-button {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    width: 40px;
+    height: 40px;
+    background-color: #c9c9c9;
+    opacity: 0.7;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.information {
+}
+
+.productMainTop {
+    display: flex;
+    justify-content: flex-start;
+
+}
+
+/*main_information*/
+
+.info {
+    list-style-type: none;
+    display: inline-block;
+    margin: 20px;
+    padding: 0;
+}
+
+.infoItem{
+    display: flex;
+}
+
+
+.infoLabel {
+    align-content: center;
+    background-size: 10px 10px;
+    width: 75px;
+    color: var(--color-main-gray);
+    margin: 10px 5px;
+
+}
+
+.infoText {
+    color: var(--color-main-black);
+    margin: 10px;
+    white-space: nowrap;
+
+}
+
+
+.infoPriceList {
+    display: grid;
+    padding-left: 0;
+    margin: 10px 0 10px 10px;
+    white-space: nowrap;
+
+}
+
+.infoPriceItem {
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    margin-bottom: 5px;
+    width: 150px;
+}
+
+.name {
+    text-align: left;
+}
+
+.price {
+    text-align: right;
+}
+
+/*상세정보*/
+.productMainBody {
+    margin-top: 10px;
+    box-shadow: 0 -2px 2px -2px #b4b4b4;
+
+}
+
+/*side_calendar*/
+
+.productSide {
+    position: sticky;
+    top: 0;
+}
+
+.sideTitle, .selectedData {
+    margin: 0;
+    padding: 0;
+    height: 0;
+}
+
+.sideContainer {
+    border: 1px solid var(--color-main-white);
+    width: 300px;
+    height: 450px;
+    margin: 10px;
+    border-radius: 5px;
+    box-shadow: 0.5px 0.5px 1px 0.5px var(--color-main-gray);
+    justify-content: center;
+}
+
+.sideCalendar {
+    margin: 10px;
+}
+
+.sideBottom {
+    margin: 0 20px;
+}
+
+.list {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0;
+}
+
+.calendar {
+    margin: 0 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+tbody {
+    display: flex;
+    flex-wrap: wrap;
+    width: 320px;
+    height: 350px;
+    justify-content: flex-start;
+}
+
+tr {
+    display: flex;
+    justify-content: flex-start;
+    align-content: center;
+    vertical-align: center;
+    padding-left: 17px;
+
+}
+
+td {
+    display: flex;
+    flex-wrap: wrap;
+    width: 40px;
+    height: 40px;
+    font-size: 15px;
+    justify-content: center;
+    align-content: center;
+    padding: 0;
+
+}
+
+.weeklist {
+    display: flex;
+    text-align: center;
+    justify-content: space-between;
+    color: var(--color-main-black);
+    font-weight: bold;
+}
+
+.thismonth {
+    width: 200px;
+    vertical-align: middle;
+}
+
+.click {
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.dateCalandar {
+    align-content: center;
+    justify-content: center;
+}
+
+
+.disabled {
+    color: var(--color-main-gray);
+}
+
+.muted {
+    opacity: 0;
+}
+
+
+.sideBottomContent, .sideBtnWrap {
+    display: flex;
+    justify-content: center;
+}
+
+
+.timeTableBtn {
+    background-color: var(--color-main-white);
+    color: var(--color-main-green);
+    border:1px solid var(--color-main-green);
+    border-radius:5px;
+    padding: 10px 30px;
+    /*이 상태는 선택 전, 선택하면 응모하기 버튼이랑 똑같은 디자인*/
+}
+
+.timeTableBtn:hover {
+    cursor: pointer;
+    background-color: var(--color-main-green);
+    color: var(--color-main-white);
+}
+
+/*side_payButton*/
+
+.sideBottomHeader {
+    margin-bottom: 10px;
+}
+
+.sideBottomHeaderTitle {
+    margin: 0;
+    font-size: 5px;
+    color: var(--color-main-black);
+}
+
+.reserve_btn {
+
+    background-color: var(--color-main-green);
+    color: var(--color-main-white);
+    border:none;
+    border-radius:5px;
+    padding: 10px 125px;
+}
+
+.reserve_btn:hover {
+    cursor: pointer;
+    box-shadow: 0 0 2px 0 var(--color-main-gray);
+}
+
+/*반응형-nav오른쪽 깨지는 menu 수정*/
+
+@media screen and (max-width: 1240px) {
+
+    .navbar__menu{
+        margin: 0;
+    }
+    .header{
+        margin: 0;
+    }
+    .navbar__logo{
+        padding: 0;
+    }
+    .reserve_btn{
+        margin: 0;
+    }
+    .posterBox {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 800px) {
+
+    .posterBox {
+        display: none;
+    }
+
+    .productWrapper {
+    }
+
+    .infoItem {
+        padding: 0;
+        margin: 0;
+    }
+
+}

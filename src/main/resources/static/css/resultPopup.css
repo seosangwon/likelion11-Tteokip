@@ -1,0 +1,71 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Pretendard';
+    list-style: none;
+}
+
+:root {
+
+    /*Color*/
+    --color-main-green: #26DDB1;
+    --color-main-gray: #8C9091;
+    --color-main-white: #FFFFFF;
+    --color-main-black: #3D3B3B;
+
+    /*Font size*/
+    --font-large: 48px;
+    --font-semi-large: 30px;
+    --font-medium: 28px;
+    --font-regular: 18px;
+    --font-small: 16px;
+    --font-micro: 14px;
+}
+
+
+.navbar {
+    display: flex;
+    margin: 30px 40px;
+}
+
+.logoImg {
+    width: 100px;
+    height:auto;
+    object-fit: cover;
+}
+
+.resultTitle {
+    color: #26ddb1;
+    font-size: x-large;
+    padding-top: 14px;
+    margin-left: 5px;
+}
+.luckimg {
+    width: 500px;
+    height: 50px;
+    object-fit: cover;
+}
+
+.concertInfo {
+    margin: 10px 40px;
+}
+
+.title {
+    margin: 0;
+    font-size: small;
+    color: #b4b4b4;
+}
+
+.content {
+    font-size: large;
+    margin: 0;
+
+}
+
+button{
+    padding: 3px 15px;
+    border: 1px solid var(--color-main-green);
+    border-radius: 5px;
+    background-color: #26ddb1;
+    color: white;
+}

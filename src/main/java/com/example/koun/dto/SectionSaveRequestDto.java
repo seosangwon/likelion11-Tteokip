@@ -30,18 +30,15 @@ public class SectionSaveRequestDto {
     }
 
 
-    public Section toEntity(Item item){
+    public Section toEntity(Item item) {
         return Section.builder()
-            .price(price)
-            .seatQuantity(seatQuantity)
-            .sectionName(sectionName)
-            .item(item)
-            .build();
+                .price(price)
+                .seatQuantity(seatQuantity)
+                .sectionName(sectionName)
+                .item(item)
+                .build();
 
     }
-
-
-
 
 
 }

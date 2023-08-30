@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Mypage</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="/css/mypage.css">
+    <link rel="stylesheet" type="text/css" href='https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css'>
+    <script src="/js/mypagedata.js"></script>
+
+</head>
+<body>
+<nav class="navbar">
+    <div class="navbar__logo">
+        <img src="/img/logo.png" alt="logo" class="logoImg" onclick="moveMain()">
+    </div>
+    <ul class="navbar__menu">
+        <li class="navbar__menu__item">로그아웃</li>
+        <li class="navbar__menu__item" onclick="moveMypage()">결과확인</li>
+        <li class="navbar__menu__item" onclick="moveMypage()">마이페이지</li>
+        <li class="navbar__menu__item">고객센터</li>
+    </ul>
+</nav>
+<div class="mainpage">
+    <header class="header" role="banner">
+        <div class="profile_area">
+            <div class="profile_inner">
+                <div class="profile">
+                    <p class="useid" id="nameid">김멋사</p>
+                    <p class="designation">님</p>
+                </div>
+                <p class="mention">당신의 행운을 빕니다.</p>
+            </div>
+        </div>
+        <div class="header_left">
+            <ul class="left_menu" role="menu">
+                <li class="editBtn_wrap">
+                    <button type="button" class="btn_edit" onclick="">
+                        <span class="text">정보수정</span>
+                    </button>
+                </li>
+                <li>
+                    <div class="left_item" id="name">
+                        <img src="/img/octicon_person-24.png" alt="nameImg">
+                        <span class="item_text" id="nameinfo">김예린</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="left_item" id="mail">
+                        <img src="/img/carbon_email.png" alt="mailImg">
+                        <span class="item_text" id="mailinfo">ek******@n****.com</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </header>
+    <div class="container">
+        <div class="content">
+            <div class="reservDetail_box">
+                <h2 class="title_text">예매내역 확인</h2>
+                <div class="itemNev">
+                    <p class="nevText" id="dayInfo">예매일</p>
+                    <p class="nevText" id="concertInfo">공연정보</p>
+                    <p class="nevText" id="currentInfo">응모현황</p>
+                    <p class="nevText" id="cancelInfo">취소</p>
+                </div>
+                <ul class="account_row" id="list">
+                    <li id="orderList">
+
+                    </li>
+                </ul>
+                <div class="pagination-container">
+                    <div class="prev-button"><</div>
+                    <div class="number-but-wrapper"><span class="number-button">1</span></div>
+                    <div class="next-button">></div>
+                </div>
+            </div>
+            <div class="liked_box">
+                <h2 class="likedtitle_text">내가 찜한 공연</h2>
+                <div class="itemNev">
+                    <p class="nevText" id="numInfo">번호</p>
+                    <p class="nevText" id="concertInfo2">공연정보</p>
+                    <p class="nevText" id="currentInfo2">응모현황</p>
+                    <p class="nevText" id="applyBtn">응모하기</p>
+                </div>
+                <ul class="account_row" id="list2">
+                    <li>
+
+                    </li>
+                </ul>
+                <div class="pagination-container">
+                    <div class="prev-button2"><</div>
+                    <div class="number-but-wrapper2"><span class="number-button2">1</span></div>
+                    <div class="next-button2">></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/js/mypage.js"></script>
+<script src="/js/mypageApply.js"></script>
+<script src="/js/mypageLike.js"></script>
+
+</body>
+</html>

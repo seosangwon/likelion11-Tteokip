@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.DynamicInsert;
 
-@DynamicInsert
+
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -57,7 +57,6 @@ public class User {
     private Boolean isDeleted;
 
     @Enumerated(EnumType.STRING)
-    @ColumnDefault("USER")
     private RoleType roleType;
 
 
