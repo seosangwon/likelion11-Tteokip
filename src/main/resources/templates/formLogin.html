@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head>
+  <title>Spring Security Example </title>
+</head>
+<body>
+<div th:if="${param.error}">
+  Invalid userEmail and password.
+</div>
+<div th:if="${param.logout}">
+  로그아웃 되었습니다.
+</div>
+<form action="http://localhost:8080/api/form_login_check" method="post">
+  <div><label> User Email : <input type="text" name="userEmail"/> </label></div>
+  <div><label> Password: <input type="password" name="password"/> </label></div>
+  <div><input type="submit" value="Sign In"/></div>
+</form>
+</body>
+</html>

@@ -7,19 +7,19 @@ import com.example.koun.domain.User;
 import javax.management.relation.Role;
 
 
-import lombok.AccessLevel;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
-@Getter
+@Data
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class UserSaveRequestDto {
 
 
+
+
     private String userName;
     private String userEmail;
-
     private String password;
 
     @Builder
