@@ -1,9 +1,9 @@
 spring:
   datasource:
-    url: jdbc:h2:tcp://localhost/~/koun
-    username: sa
-    password:
-    driver-class-name: org.h2.Driver
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://koundb.cvrwbkhznvql.ap-northeast-2.rds.amazonaws.com:3306/kounDB?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+      username: root
+      password: Est1!cebe
   security:
     oauth2:
       client:
@@ -48,14 +48,14 @@ logging:
 
 
 
-
+#
 ##배포용
 #spring:
 #  datasource:
 #    driver-class-name: com.mysql.cj.jdbc.Driver
-#    url: jdbc:mysql://koundb.cseedxgtmzcd.ap-northeast-2.rds.amazonaws.com:3306/kounDB?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
-#    username: admin
-#    password: koun1234
+#    url: jdbc:mysql://koundb.cvrwbkhznvql.ap-northeast-2.rds.amazonaws.com:3306/kounDB?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+#    username: root
+#    password: Est1!cebe
 #
 #
 #  jpa:
@@ -70,8 +70,8 @@ logging:
 #logging:
 #  level:
 #    org.hibernate.SQL: debug
-
-
+#
+#
 #  security:
 #    oauth2:
 #      client:
@@ -90,8 +90,8 @@ logging:
 #            token_uri: https://kauth.kakao.com/oauth/token
 #            user-info-uri: https://kapi.kakao.com/v2/user/me
 #            user_name_attribute: id
-
-
+#
+#
 
 
 

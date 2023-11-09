@@ -38,7 +38,7 @@ dependencies {
     compileOnly 'org.projectlombok:lombok'
 
     implementation group: 'com.mysql', name: 'mysql-connector-j', version: '8.0.33'
-    runtimeOnly 'com.h2database:h2'
+ //   runtimeOnly 'com.h2database:h2'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.security:spring-security-test'
