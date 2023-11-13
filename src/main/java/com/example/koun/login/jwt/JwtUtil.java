@@ -4,6 +4,7 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.auth0.jwt.interfaces.DecodedJWT;
+import com.example.koun.domain.RoleType;
 import com.example.koun.dto.UserSaveResponseDto;
 import com.example.koun.repository.UserRepository;
 import com.example.koun.service.UserService;
@@ -40,10 +41,13 @@ public class JwtUtil {
 
     public String generateRefreshToken(UserSaveResponseDto user) {
         // 사용자의 기본 정보를 포함한 리프레시 토큰을 생성합니다.
+        String roleType = user.getRoleType().toString();
+
         return JWT.create()
-                .withSubject(user.getUserEmail())  // 사용자 이름을 subject로 설정
+                .withSubject(user.getUserEmail()) // 사용자 이메일을 subject로 설정
+                .withClaim("userId", user.getId().toString()) // 사용자 ID를 별도의 클레임으로 추가
                 .withExpiresAt(new Date(System.currentTimeMillis() + REFRESH_EXPIRATION_TIME))
-                .withClaim("ROLE", "USER")
+                .withClaim("ROLE", roleType)
                 .sign(Algorithm.HMAC256(SECRET_KEY));
     }
 
@@ -53,10 +57,13 @@ public class JwtUtil {
                 .build()
                 .verify(refreshToken);
         String userEmail = decodedJWT.getSubject();
+        String userId = decodedJWT.getClaim("userId").asString();
+        String roleType = decodedJWT.getClaim("ROLE").asString();
 
         return JWT.create()
                 .withSubject(userEmail)
-                .withClaim("ROLE", "USER")
+                .withClaim("userId",userId)
+                .withClaim("ROLE",roleType)
                 .withExpiresAt(new Date(System.currentTimeMillis() + ACCESS_EXPIRATION_TIME))
                 .sign(Algorithm.HMAC256(SECRET_KEY));
     }

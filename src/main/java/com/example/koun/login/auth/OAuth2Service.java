@@ -6,9 +6,13 @@ import com.example.koun.dto.UserSaveResponseDto;
 import com.example.koun.login.jwt.JwtUtil;
 import com.example.koun.repository.UserRepository;
 import com.example.koun.service.UserService;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
 import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
@@ -16,8 +20,11 @@ import org.springframework.security.oauth2.client.userinfo.OAuth2UserService;
 import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
 import org.springframework.security.oauth2.core.user.DefaultOAuth2User;
 import org.springframework.security.oauth2.core.user.OAuth2User;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
@@ -62,7 +69,7 @@ public class OAuth2Service implements org.springframework.security.oauth2.client
 
 
         return new DefaultOAuth2User(
-                Collections.singleton(new SimpleGrantedAuthority("USER1")),
+                Collections.singleton(new SimpleGrantedAuthority("USER")),
                 customAttribute,
                 userNameAttributeName);
 
@@ -83,24 +90,15 @@ public class OAuth2Service implements org.springframework.security.oauth2.client
         return customAttribute;
     }
 
-
-    public ResponseEntity<Map<String, String>> updateOrSaveUser(UserProfile userProfile) {
+    public User updateOrSaveUser(UserProfile userProfile) {
         User user = userRepository
-                .findByEmail(userProfile.getEmail())
+                .findByEmailAndProvider(userProfile.getEmail(), userProfile.getProvider())
                 .map(value -> value.updateUser(userProfile.getName(), userProfile.getEmail()))
                 .orElse(userProfile.toEntity());
-        UserSaveResponseDto userDto = new UserSaveResponseDto(user);
-        String refreshToken = jwtUtil.generateRefreshToken(userDto);
-        String accessToken = jwtUtil.generateAccessToken(refreshToken);
-        System.out.println(accessToken);
-        userRepository.save(user);
-        userService.saveRefreshToken(user.getId(),refreshToken );
 
-        Map<String, String> tokens = new HashMap<>();
-        tokens.put("accessToken", accessToken);
-        tokens.put("refreshToken", refreshToken);
-
-        return ResponseEntity.ok(tokens);
+        return userRepository.save(user);
     }
+
+
 
 }

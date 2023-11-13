@@ -87,4 +87,8 @@ public class UserService implements UserDetailsService {
     }
 
 
+    public boolean existsByEmail(String userEmail) {
+        Optional<User> userOptional = userRepository.findByEmail(userEmail);
+        return userOptional.isPresent();
+    }
 }

@@ -38,6 +38,7 @@ public class UserSaveRequestDto {
                 .userName(userName)
                 .userEmail(userEmail)
                 .password(password)
+                .roleType(RoleType.USER)
                 .build();
 
     }

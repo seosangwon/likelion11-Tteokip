@@ -30,8 +30,6 @@ public class UserController {
     private PasswordEncoder passwordEncoder;
 
 
-
-
     @GetMapping("/")
     public String s3Start() {
         return "html/main";
@@ -43,7 +41,7 @@ public class UserController {
     }
 
     @GetMapping("/formLogin")
-    public String loginPage(){
+    public String loginPage() {
         return "formLogin";
     }
 
@@ -74,36 +72,35 @@ public class UserController {
         return "loginTest";
     }
 
+    @GetMapping("admin/ItemAndSection")
+    public String itemCreate(){
+        return "ItemAndSection";
+    }
+    @GetMapping("/admin/RaffleDraw")
+    public String raffleDraw(){
+        return "RaffleDraw";
+    }
+
 
     //폼 로그인 회원가입
-    @PostMapping("/api/form_login")
-    public ResponseEntity<TokenResponseDto> formLoginCreate(@RequestBody UserSaveRequestDto requestDto) {
+    @PostMapping("/api/signup")
+    public ResponseEntity<Void> formLoginCreate(@RequestBody UserSaveRequestDto requestDto) {
+
+        if (userService.existsByEmail(requestDto.getUserEmail())) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Email already in use");
+        }
         Long userId = userService.join(requestDto);
-        UserSaveResponseDto user = userService.findOneById(userId);
-        String refreshToken = jwtUtil.generateRefreshToken(user);
-        String accessToken = jwtUtil.generateAccessToken(refreshToken);
-        userService.saveRefreshToken(userId, refreshToken);
 
-
-        /**
-         * 회원가입에 토큰을 생성 할 필요는 없는거 같다
-         */
-        TokenResponseDto tokenResponseDto = TokenResponseDto.builder()
-                .refreshToken(refreshToken)
-                .accessToken(accessToken)
-                .build();
-
-
-        return new ResponseEntity<>(tokenResponseDto, HttpStatus.CREATED);
+        return new ResponseEntity<>(HttpStatus.CREATED);
 
 
     }
 
     //폼 로그인 하기
-    @PostMapping("/api/form_login_check")
-    public ResponseEntity<TokenResponseDto> formLoginCheck(@RequestBody UserSaveRequestDto requestDto){
-        UserSaveResponseDto user=userService.findUserByEmail(requestDto.getUserEmail());
-        if (!confirmUser(requestDto.getPassword(), user.getPassword())){
+    @PostMapping("/api/form_login")
+    public ResponseEntity<TokenResponseDto> formLoginCheck(@RequestBody UserSaveRequestDto requestDto) {
+        UserSaveResponseDto user = userService.findUserByEmail(requestDto.getUserEmail());
+        if (!confirmUser(requestDto.getPassword(), user.getPassword())) {
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Invalid credentials");
         }
 
