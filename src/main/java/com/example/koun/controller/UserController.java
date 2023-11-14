@@ -104,6 +104,7 @@ public class UserController {
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Invalid credentials");
         }
 
+
         String refreshToken = jwtUtil.generateRefreshToken(user);
         String accessToken = jwtUtil.generateAccessToken(refreshToken);
         userService.saveRefreshToken(user.getId(), refreshToken);
@@ -111,6 +112,7 @@ public class UserController {
         TokenResponseDto tokenResponseDto = TokenResponseDto.builder()
                 .refreshToken(refreshToken)
                 .accessToken(accessToken)
+                .usrId(user.getId())
                 .build();
 
         return new ResponseEntity<>(tokenResponseDto, HttpStatus.CREATED);
