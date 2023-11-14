@@ -3,21 +3,20 @@ package com.example.koun.controller;
 import com.example.koun.config.AppConfig;
 import com.example.koun.domain.User;
 import com.example.koun.dto.TokenResponseDto;
+import com.example.koun.dto.UserInfoDto;
 import com.example.koun.dto.UserSaveRequestDto;
 import com.example.koun.dto.UserSaveResponseDto;
 import com.example.koun.login.jwt.JwtUtil;
 import com.example.koun.service.UserService;
 import com.google.common.base.CharMatcher;
+import com.nimbusds.openid.connect.sdk.claims.UserInfo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 @Controller
@@ -112,7 +111,7 @@ public class UserController {
         TokenResponseDto tokenResponseDto = TokenResponseDto.builder()
                 .refreshToken(refreshToken)
                 .accessToken(accessToken)
-                .usrId(user.getId())
+                .userId(user.getId())
                 .build();
 
         return new ResponseEntity<>(tokenResponseDto, HttpStatus.CREATED);
@@ -121,6 +120,16 @@ public class UserController {
 
     public boolean confirmUser(String password, String dbPassword) {
         return passwordEncoder.matches(password, dbPassword);
+    }
+
+
+    //user 조회
+    @GetMapping("/api/users/{userId}")
+    public ResponseEntity<UserInfoDto> getUser(@PathVariable Long userId ){
+        UserSaveResponseDto userSaveResponseDto = userService.findOneById(userId);
+        UserInfoDto userInfoDto = new UserInfoDto(userSaveResponseDto.getUserName(), userSaveResponseDto.getUserEmail());
+
+        return new ResponseEntity<>(userInfoDto, HttpStatus.CREATED);
     }
 
 

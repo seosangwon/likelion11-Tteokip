@@ -44,6 +44,7 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
         TokenResponseDto tokenResponseDto = TokenResponseDto.builder()
                 .refreshToken(refreshToken)
                 .accessToken(accessToken)
+                .userId(user.getId())
                 .build();
 
         response.setContentType("application/json;charset=UTF-8");

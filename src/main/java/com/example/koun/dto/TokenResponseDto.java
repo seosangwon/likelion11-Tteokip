@@ -9,14 +9,14 @@ import lombok.NoArgsConstructor;
 public class TokenResponseDto {
     private String accessToken;
     private String refreshToken;
-    private Long usrId;
+    private Long userId;
 
 
     @Builder
-    public TokenResponseDto(String accessToken, String refreshToken , Long usrId) {
+    public TokenResponseDto(String accessToken, String refreshToken , Long userId) {
         this.accessToken = accessToken;
         this.refreshToken = refreshToken;
-        this.usrId = usrId;
+        this.userId = userId;
     }
 
 }
