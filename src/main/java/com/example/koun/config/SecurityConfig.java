@@ -84,14 +84,20 @@ public class SecurityConfig {
                                 .permitAll()
 
                 )
-                .logout((logout) -> logout.permitAll())
+                .logout(customizer -> customizer
+                        .logoutUrl("/logout")
+                        .logoutSuccessUrl("/")
+                        .deleteCookies("remember-me")
+                        .permitAll()
+                )
 
 
                 .oauth2Login()
                 .defaultSuccessUrl("/main.html")
                 .successHandler(customAuthenticationSuccessHandler)
                 .userInfoEndpoint() // 사용자가 로그인에 성공하였을 경우,
-//                .userService(oAuth2Service) // 해당 서비스 로직을 타도록 설정
+                .userService(oAuth2Service) // 해당 서비스 로직을 타도록 설정
+
 
                 .and()
 
