@@ -93,6 +93,7 @@ public class RaffleService {
 
         List<Raffle> raffles = user.getRaffles(); // User 엔티티에서 Raffle 리스트를 가져옴
 
+
         // Raffle 엔티티 리스트를 RaffleResponseDto 리스트로 변환
         List<RaffleFindResponseDto> raffleFindResponseDtos = raffles.stream()
             .map(RaffleFindResponseDto::new)

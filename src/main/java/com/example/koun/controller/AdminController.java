@@ -34,6 +34,16 @@ public class AdminController {
     }
 
 
+    @GetMapping("/ItemAndSection")
+    public String itemCreate(){
+        return "ItemAndSection";
+    }
+    @GetMapping("/RaffleDraw")
+    public String raffleDraw(){
+        return "RaffleDraw";
+    }
+
+
 
 
 
