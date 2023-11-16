@@ -58,4 +58,14 @@ public class ItemAPIController {
         List<ItemResponseDto> items = itemService.getAllItems();
         return new ResponseEntity<>(items, HttpStatus.OK);
     }
+
+
+    //user의 찜 목록 조회
+    @GetMapping("{userId}")
+    public ResponseEntity<List<ItemResponseDto>> getUserLikeItems(@PathVariable Long userId){
+        List<ItemResponseDto> items = itemService.getUserLikeItemList(userId);
+
+        return new ResponseEntity<>(items,HttpStatus.OK);
+    }
+
 }

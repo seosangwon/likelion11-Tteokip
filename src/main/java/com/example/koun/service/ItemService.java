@@ -1,14 +1,21 @@
 package com.example.koun.service;
 
 import com.example.koun.domain.Item;
+import com.example.koun.domain.Like;
+import com.example.koun.domain.Raffle;
+import com.example.koun.domain.User;
 import com.example.koun.dto.ItemRequestDto;
 import com.example.koun.dto.ItemResponseDto;
 //import com.example.koun.dto.ItemUpdateRequestDto;
 import com.example.koun.repository.ItemRepository;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 import java.util.stream.Collectors;
 
+import com.example.koun.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,6 +26,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class ItemService {
 
     private final ItemRepository itemRepository;
+    private final UserRepository userRepository;
 
     // 새로운 아이템 등록
     @Transactional
@@ -70,6 +78,41 @@ public class ItemService {
                 .map(ItemResponseDto::new)
                 .collect(Collectors.toList());
     }
+
+    //user의 좋아요 아이템 조회
+    @Transactional(readOnly = true)
+    public List<ItemResponseDto> getUserLikeItemList(Long userId) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new IllegalArgumentException("해당 유저가 없습니다"));
+        List<Like> likes = user.getLikes();
+        List<Raffle> raffles = user.getRaffles();
+        Set<Long> raffleItemIds = raffles.stream()
+                .map(Raffle::getItem)
+                .map(Item::getId)
+                .collect(Collectors.toSet());
+
+        List<ItemResponseDto> itemResponseDtos = new ArrayList<>();
+
+        for (Like like : likes) {
+            Item item = like.getItem();
+            ItemResponseDto dto = new ItemResponseDto(item);
+            dto.setUserLike(true);
+
+            // 응모를 햇는지 안햇는지 체크
+            if (raffleItemIds.contains(item.getId())) {
+                dto.setUserRaffle(true);
+            } else {
+                dto.setUserRaffle(false);
+            }
+
+            itemResponseDtos.add(dto);
+        }
+
+        return itemResponseDtos;
+    }
+
+
+
 
 
 }

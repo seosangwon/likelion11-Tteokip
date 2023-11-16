@@ -19,6 +19,9 @@ public class ItemResponseDto {
     private String post;
     private String uploadTime;
     private String ageRequirement;
+    private boolean userLike;
+    private boolean userRaffle;
+
 
     //파라미터로 Entity를 받으면 Dto로 변환
     public ItemResponseDto(Item item){
