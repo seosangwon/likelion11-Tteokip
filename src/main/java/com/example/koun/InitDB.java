@@ -94,6 +94,7 @@ public class InitDB {
                     .runningTime("150분")
                     .post("https://ticketimage.interpark.com/Play/image/large/23/23007654_p.gif")
                     .uploadTime(uploadTime)
+                    .likeNum(150)
                     .build();
             itemRepository.save(item);
 
@@ -106,6 +107,7 @@ public class InitDB {
                     .runningTime("240분")
                     .post("https://ticketimage.interpark.com/Play/image/large/23/23007291_p.gif")
                     .uploadTime(uploadTime1)
+                    .likeNum(200)
                     .build();
             itemRepository.save(item1);
 
@@ -118,6 +120,7 @@ public class InitDB {
                     .runningTime("150분")
                     .post("https://ticketimage.interpark.com/Play/image/large/23/23011026_p.gif")
                     .uploadTime(uploadTime2)
+                    .likeNum(170)
                     .build();
             itemRepository.save(item2);
 
@@ -130,6 +133,7 @@ public class InitDB {
                     .runningTime("100분")
                     .post("https://ticketimage.interpark.com/Play/image/large/23/23011003_p.gif")
                     .uploadTime(uploadTime3)
+                    .likeNum(500)
                     .build();
             itemRepository.save(item3);
 
@@ -142,6 +146,7 @@ public class InitDB {
                     .runningTime("140분")
                     .post("https://ticketimage.interpark.com/Play/image/large/23/23010652_p.gif")
                     .uploadTime(uploadTime4)
+                    .likeNum(300)
                     .build();
             itemRepository.save(item4);
 
@@ -154,6 +159,7 @@ public class InitDB {
                     .runningTime("120분")
                     .post("https://ticketimage.interpark.com/Play/image/large/23/23010177_p.gif")
                     .uploadTime(uploadTime5)
+                    .likeNum(200)
                     .build();
             itemRepository.save(item5);
 
@@ -166,6 +172,7 @@ public class InitDB {
                     .runningTime("120분")
                     .post("https://ticketimage.interpark.com/Play/image/large/23/23011060_p.gif")
                     .uploadTime(uploadTime6)
+                    .likeNum(20)
                     .build();
             itemRepository.save(item6);
 
@@ -178,6 +185,7 @@ public class InitDB {
                     .runningTime("120분")
                     .post("https://ticketimage.interpark.com/Play/image/large/23/23009197_p.gif")
                     .uploadTime(uploadTime7)
+                    .likeNum(800)
                     .build();
             itemRepository.save(item7);
 
@@ -190,6 +198,7 @@ public class InitDB {
                     .runningTime("110분")
                     .post("https://ticketimage.interpark.com/Play/image/large/23/23011005_p.gif")
                     .uploadTime(uploadTime8)
+                    .likeNum(900)
                     .build();
             itemRepository.save(item8);
 
@@ -202,6 +211,7 @@ public class InitDB {
                     .runningTime("120분")
                     .post("https://ticketimage.interpark.com/Play/image/large/23/23009717_p.gif")
                     .uploadTime(uploadTime9)
+                    .likeNum(800)
                     .build();
             itemRepository.save(item9);
 
@@ -214,6 +224,7 @@ public class InitDB {
                     .runningTime("120분")
                     .post("https://ticketimage.interpark.com/Play/image/large/23/23015862_p.gif")
                     .uploadTime(uploadTime10)
+                    .likeNum(50)
                     .build();
             itemRepository.save(item10);
 
@@ -226,6 +237,7 @@ public class InitDB {
                     .runningTime("120분")
                     .post("https://ticketimage.interpark.com/Play/image/large/23/23012636_p.gif")
                     .uploadTime(uploadTime11)
+                    .likeNum(20)
                     .build();
             itemRepository.save(item11);
 
@@ -238,6 +250,7 @@ public class InitDB {
                     .runningTime("150분")
                     .post("https://ticketimage.interpark.com/Play/image/large/23/23014112_p.gif")
                     .uploadTime(uploadTime12)
+                    .likeNum(180)
                     .build();
             itemRepository.save(item12);
 
@@ -250,6 +263,7 @@ public class InitDB {
                     .runningTime("300분")
                     .post("https://ticketimage.interpark.com/Play/image/large/23/23016343_p.gif")
                     .uploadTime(uploadTime13)
+                    .likeNum(80)
                     .build();
             itemRepository.save(item13);
 
@@ -262,6 +276,7 @@ public class InitDB {
                     .runningTime("150분")
                     .post("https://ticketimage.interpark.com/Play/image/large/23/23015513_p.gif")
                     .uploadTime(uploadTime14)
+                    .likeNum(780)
                     .build();
             itemRepository.save(item14);
 
