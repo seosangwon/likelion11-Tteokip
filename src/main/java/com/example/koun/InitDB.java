@@ -289,7 +289,8 @@ public class InitDB {
             userRepository.save(user);
 
 
-            List<Item> items = Arrays.asList(item, item1, item2, item3, item4, item5, item6, item7, item8, item9);
+            List<Item> items = Arrays.asList(item, item1, item2, item3, item4, item5,
+                    item6, item7, item8, item9,item10,item11,item12,item13,item14);
 
             for (int i = 0; i < items.size(); i++) {
                 createSectionsForItem(items.get(i), i);

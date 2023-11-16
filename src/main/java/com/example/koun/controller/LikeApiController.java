@@ -12,14 +12,14 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor;
 
 @Controller
-@RequestMapping("api/like")
+@RequestMapping("api/likes")
 @RequiredArgsConstructor
 public class LikeApiController {
     private final LikeService likeService;
 
 
     //좋아요 생성
-    @PostMapping("create")
+    @PostMapping("/create")
     public ResponseEntity<Long> createLike(@RequestBody LikeRequestDto requestDto){
         Long likeId = likeService.joinLike(requestDto);
 
