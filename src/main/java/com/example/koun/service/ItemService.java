@@ -4,6 +4,7 @@ import com.example.koun.domain.Item;
 import com.example.koun.domain.Like;
 import com.example.koun.domain.Raffle;
 import com.example.koun.domain.User;
+import com.example.koun.dto.ItemGetRequestDto;
 import com.example.koun.dto.ItemRequestDto;
 import com.example.koun.dto.ItemResponseDto;
 //import com.example.koun.dto.ItemUpdateRequestDto;
@@ -67,10 +68,23 @@ public class ItemService {
 
     // 아이템 이름으로 조회
     @Transactional(readOnly = true)
-    public ItemResponseDto findItemsByName(String itemName) {
+    public ItemResponseDto findItemByGetRequestDto(ItemGetRequestDto requestDto) {
+        String itemName = requestDto.getItemName();
         Item item = itemRepository.findByItemName(itemName)
                 .orElseThrow(() -> new IllegalArgumentException("해당 아이템이 없습니다 name" + itemName));
-        return new ItemResponseDto(item);
+        User user = userRepository.findById(requestDto.getUserId())
+                .orElseThrow(() -> new IllegalArgumentException("해당 유저가 없습니다"));
+        List<Like> likes = user.getLikes();
+
+        boolean userLikesThisItem = likes.stream()
+                .anyMatch(like -> like.getItem().getId().equals(item.getId()));
+
+        ItemResponseDto responseDto = new ItemResponseDto(item);
+        responseDto.setUserLike(userLikesThisItem);
+
+        return responseDto;
+
+
     }
 
     // 모든 아이템 조회
@@ -125,9 +139,6 @@ public class ItemService {
 //        }
 //        return itemResponseDtos;
 //    }
-
-
-
 
 
 }

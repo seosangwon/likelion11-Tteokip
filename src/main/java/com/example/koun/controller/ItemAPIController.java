@@ -1,4 +1,5 @@
 package com.example.koun.controller;
+import com.example.koun.dto.ItemGetRequestDto;
 import com.example.koun.dto.ItemRequestDto;
 import com.example.koun.dto.ItemResponseDto;
 //import com.example.koun.dto.ItemUpdateRequestDto;
@@ -21,12 +22,8 @@ public class ItemAPIController {
         Long itemId = itemService.joinItem(requestDto);
         return new ResponseEntity<>(itemId, HttpStatus.CREATED);
     }
-    // 특정 아이템 조회
-    @GetMapping
-    public ResponseEntity<ItemResponseDto> getItem(@RequestParam Long itemId) {
-        ItemResponseDto item = itemService.findById(itemId);
-        return new ResponseEntity<>(item, HttpStatus.OK);
-    }
+
+
     // 아이템 정보 업데이트
     // (주석 해제하고 사용할 수 있도록 작성)
 //    @PutMapping("/update")
@@ -41,14 +38,17 @@ public class ItemAPIController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-    // 아이템 이름으로 조회
+    // 아이템 이름,유저Id로 조회
     @GetMapping("/search")
-    public ResponseEntity<ItemResponseDto> searchItemsByName(@RequestParam String itemName) {
-        ItemResponseDto item = itemService.findItemsByName(itemName);
-//        if (item != null) {
-//            return new ResponseEntity<>(item, HttpStatus.OK);
-//        } else {정
-        return new ResponseEntity<>(item, HttpStatus.OK);
+    public ResponseEntity<ItemResponseDto> getItemByItemNameUserId(@RequestParam("userId") Long userId,
+                                                                   @RequestParam("itemName") String itemName)   {
+    ItemGetRequestDto itemGetRequestDto = new ItemGetRequestDto();
+    itemGetRequestDto.setItemName(itemName);
+    itemGetRequestDto.setUserId(userId);
+    ItemResponseDto itemByGetRequestDto = itemService.findItemByGetRequestDto(itemGetRequestDto);
+
+        return new ResponseEntity<>(itemByGetRequestDto, HttpStatus.OK);
+
     }
 
 
