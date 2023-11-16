@@ -71,11 +71,19 @@ public class ItemService {
                 .orElseThrow(() -> new IllegalArgumentException("해당 유저가 없습니다"));
         List<Like> likes = user.getLikes();
 
-        boolean userLikesThisItem = likes.stream()
-                .anyMatch(like -> like.getItem().getId().equals(item.getId()));
+        Optional<Like> likeOptional = likes.stream()
+                .filter(like -> like.getItem().getId().equals(item.getId()))
+                .findFirst();
 
         ItemResponseDto responseDto = new ItemResponseDto(item);
-        responseDto.setUserLike(userLikesThisItem);
+
+        // likeOptional이 존재하면, userLike를 true로 설정하고 likeId를 설정합니다.
+        if (likeOptional.isPresent()) {
+            responseDto.setUserLike(true);
+            responseDto.setLikeId(likeOptional.get().getId()); // Like 객체의 ID를 설정
+        } else {
+            responseDto.setUserLike(false);
+        }
 
         return responseDto;
 

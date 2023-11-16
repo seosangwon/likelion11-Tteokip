@@ -1,10 +1,13 @@
 package com.example.koun.controller;
+
 import com.example.koun.dto.ItemGetRequestDto;
 import com.example.koun.dto.ItemRequestDto;
 import com.example.koun.dto.ItemResponseDto;
 //import com.example.koun.dto.ItemUpdateRequestDto;
 import com.example.koun.service.ItemService;
+
 import java.util.List;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -20,6 +23,7 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class ItemAPIController {
     private final ItemService itemService;
+
     // 새로운 아이템 등록
     @PostMapping("/admin")
     public ResponseEntity<Long> createItem(@RequestBody ItemRequestDto requestDto) {
@@ -45,11 +49,11 @@ public class ItemAPIController {
     // 아이템 이름,유저Id로 조회
     @GetMapping("/search")
     public ResponseEntity<ItemResponseDto> getItemByItemNameUserId(@RequestParam("userId") Long userId,
-                                                                   @RequestParam("itemName") String itemName)   {
-    ItemGetRequestDto itemGetRequestDto = new ItemGetRequestDto();
-    itemGetRequestDto.setItemName(itemName);
-    itemGetRequestDto.setUserId(userId);
-    ItemResponseDto itemByGetRequestDto = itemService.findItemByGetRequestDto(itemGetRequestDto);
+                                                                   @RequestParam("itemName") String itemName) {
+        ItemGetRequestDto itemGetRequestDto = new ItemGetRequestDto();
+        itemGetRequestDto.setItemName(itemName);
+        itemGetRequestDto.setUserId(userId);
+        ItemResponseDto itemByGetRequestDto = itemService.findItemByGetRequestDto(itemGetRequestDto);
 
         return new ResponseEntity<>(itemByGetRequestDto, HttpStatus.OK);
 
@@ -66,10 +70,10 @@ public class ItemAPIController {
 
     //user의 찜 목록 조회
     @GetMapping("{userId}")
-    public ResponseEntity<List<ItemResponseDto>> getUserLikeItems(@PathVariable Long userId){
+    public ResponseEntity<List<ItemResponseDto>> getUserLikeItems(@PathVariable Long userId) {
         List<ItemResponseDto> items = itemService.getUserLikeItemList(userId);
 
-        return new ResponseEntity<>(items,HttpStatus.OK);
+        return new ResponseEntity<>(items, HttpStatus.OK);
     }
 
     // 인기 top 1~10 조회 (likeNum 기준) -- 통과
@@ -83,7 +87,6 @@ public class ItemAPIController {
     }
 
 
-
     // 신규 top 1 ~ 10 조회 (uploadTime 기준) -- 통과
     @GetMapping("/uploads")
     public ResponseEntity<Page<ItemResponseDto>> listNewTops(
@@ -92,10 +95,6 @@ public class ItemAPIController {
         Page<ItemResponseDto> newTopItems = itemService.getNewTopLikes(pageable);
         return new ResponseEntity<>(newTopItems, HttpStatus.OK);
     }
-
-
-
-
 
 
 }

@@ -21,6 +21,7 @@ public class ItemResponseDto {
     private String ageRequirement;
     private boolean userLike;
     private boolean userRaffle;
+    private Long likeId;
 
 
     //파라미터로 Entity를 받으면 Dto로 변환
