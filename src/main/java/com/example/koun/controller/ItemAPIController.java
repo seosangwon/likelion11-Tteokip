@@ -6,6 +6,10 @@ import com.example.koun.dto.ItemResponseDto;
 import com.example.koun.service.ItemService;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -68,13 +72,30 @@ public class ItemAPIController {
         return new ResponseEntity<>(items,HttpStatus.OK);
     }
 
-//    //신규 top 10 아이템 조회
-//    @GetMapping("/recent")
-//    public ResponseEntity<List<ItemResponseDto>> getRecentItems(){
-//        List<ItemResponseDto> recentItems = itemService.getRecentItems();
-//
-//        return new ResponseEntity<>(recentItems, HttpStatus.OK);
-//    }
+    // 인기 top 1~10 조회 (likeNum 기준) -- 통과
+
+    @GetMapping("/tops")
+    public ResponseEntity<Page<ItemResponseDto>> list(
+            @PageableDefault(size = 10, sort = "likeNum", direction = Sort.Direction.DESC)
+            Pageable pageable) {
+        Page<ItemResponseDto> topLikedItems = itemService.getTopLikes(pageable);
+        return new ResponseEntity<>(topLikedItems, HttpStatus.OK);
+    }
+
+
+
+    // 신규 top 1 ~ 10 조회 (uploadTime 기준) -- 통과
+    @GetMapping("/uploads")
+    public ResponseEntity<Page<ItemResponseDto>> listNewTops(
+            @PageableDefault(size = 10, sort = "uploadTime", direction = Sort.Direction.DESC)
+            Pageable pageable) {
+        Page<ItemResponseDto> newTopItems = itemService.getNewTopLikes(pageable);
+        return new ResponseEntity<>(newTopItems, HttpStatus.OK);
+    }
+
+
+
+
 
 
 }

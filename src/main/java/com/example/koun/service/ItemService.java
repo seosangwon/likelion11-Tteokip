@@ -19,7 +19,10 @@ import java.util.stream.Collectors;
 
 import com.example.koun.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -37,14 +40,6 @@ public class ItemService {
     public Long joinItem(ItemRequestDto itemRequestDto) {
         Item item = itemRequestDto.toEntity(); // ItemDto를 Item 엔티티로 변환
         return itemRepository.save(item).getId();
-    }
-
-    // 특정 아이템 조회
-    @Transactional(readOnly = true)
-    public ItemResponseDto findById(Long itemId) {
-        Item item = itemRepository.findById(itemId)
-                .orElseThrow(() -> new IllegalArgumentException("해당 상품이 없습니다. id=" + itemId));
-        return new ItemResponseDto(item); // Item 엔티티를 ItemDto로 변환하여 반환
     }
 
 
@@ -66,7 +61,7 @@ public class ItemService {
     }
 
 
-    // 아이템 이름으로 조회
+    // 아이템 이름,userId로 조회
     @Transactional(readOnly = true)
     public ItemResponseDto findItemByGetRequestDto(ItemGetRequestDto requestDto) {
         String itemName = requestDto.getItemName();
@@ -83,6 +78,15 @@ public class ItemService {
         responseDto.setUserLike(userLikesThisItem);
 
         return responseDto;
+
+
+    }
+
+    //아이템 이름 으로 조회
+    @Transactional(readOnly = true)
+    public ItemResponseDto findItemsByName(String itemName){
+        Item item = itemRepository.findByItemName(itemName).orElseThrow(()-> new IllegalArgumentException("아이템이 없습니다"));
+        return new ItemResponseDto(item);
 
 
     }
@@ -127,6 +131,41 @@ public class ItemService {
 
         return itemResponseDtos;
     }
+
+
+    // 인기 top1~10 조회
+    public Page<ItemResponseDto> getTopLikes(Pageable pageable) {
+        Page<Item> topItems = itemRepository.findTopLikedItems(pageable);
+        return topItems.map(this::convertToDto);
+    }
+
+    private ItemResponseDto convertToDto(Item item) {
+        // Item 객체를 ItemResponseDto 객체로 변환하는 로직
+        return new ItemResponseDto(item);
+    }
+
+
+
+
+    // 신규 top1~10 조회
+    public Page<ItemResponseDto> getNewTopLikes(Pageable pageable) {
+        Page<Item> newTopItems = itemRepository.findNewTopLikedItems(pageable);
+        return newTopItems.map(this::convertToDto2);
+    }
+
+    private ItemResponseDto convertToDto2(Item item) {
+        // Item 객체를 ItemResponseDto 객체로 변환하는 로직
+        return new ItemResponseDto(item);
+    }
+
+
+
+
+
+
+
+
+
 
 // //   신규 top10 아이템 조회
 //    @Transactional(readOnly = true)

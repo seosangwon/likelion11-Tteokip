@@ -23,18 +23,25 @@ public class LikeService {
 
     //DB에 저장
     @Transactional
-    public Long joinLike(LikeRequestDto likeRequestDto){
+    public Long joinLike(LikeRequestDto likeRequestDto) {
         Long itemId = likeRequestDto.getItemId();
         Long userId = likeRequestDto.getUserId();
 
         User user = userRepository.findById(userId).orElseThrow(() -> new IllegalArgumentException("해당 유저가 없습니다"));
-        Item item = itemRepository.findById(itemId).orElseThrow(()-> new IllegalArgumentException("해당 아이템이 없습니다"));
+        Item item = itemRepository.findById(itemId).orElseThrow(() -> new IllegalArgumentException("해당 아이템이 없습니다"));
 
         Like like = likeRequestDto.toEntity(user, item);
 
         return likeRepository.save(like).getId();
 
 
+    }
+
+    // 좋아요 삭제
+    public void deleteLike(Long likeId) {
+        Like like = likeRepository.findById(likeId)
+                .orElseThrow(() -> new IllegalArgumentException("해당 상품이 없습니다. id=" + likeId));
+        likeRepository.delete(like);
     }
 
 

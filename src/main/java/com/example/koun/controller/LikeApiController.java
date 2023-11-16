@@ -8,10 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor;
 
 @Controller
@@ -28,6 +25,14 @@ public class LikeApiController {
 
         return new ResponseEntity<>(likeId, HttpStatus.CREATED);
     }
+
+    // 좋아요 삭제 -- 성공
+    @DeleteMapping("/delete")
+    public ResponseEntity<Void> deleteLike(@RequestParam Long likeId) {
+        likeService.deleteLike(likeId);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
 
 
 

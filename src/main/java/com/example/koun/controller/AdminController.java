@@ -23,15 +23,15 @@ public class AdminController {
 
 
 
-//    @PostMapping("/raffle/draw/item")
-//    public ResponseEntity<Void> drawRaffleForItem(@RequestBody ItemNameDto requestDto) {
-//        // TODO: JWT 토큰 검증 및 관리자 권한 확인 로직
-//
-//        //아이템 이름으로 조회하는 로직 필요
-//        ItemResponseDto itemResponseDto = itemService.findItemsByName(requestDto.getItemName());
-//        raffleService.drawRaffleForItem(itemResponseDto.getId());
-//        return new ResponseEntity<>(HttpStatus.OK);
-//    }
+    @PostMapping("/raffle/draw/item")
+    public ResponseEntity<Void> drawRaffleForItem(@RequestBody ItemNameDto requestDto) {
+        // TODO: JWT 토큰 검증 및 관리자 권한 확인 로직
+
+        //아이템 이름으로 조회하는 로직 필요
+        ItemResponseDto itemResponseDto = itemService.findItemsByName(requestDto.getItemName());
+        raffleService.drawRaffleForItem(itemResponseDto.getId());
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 
 
     @GetMapping("/ItemAndSection")
