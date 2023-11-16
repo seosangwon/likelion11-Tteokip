@@ -68,4 +68,13 @@ public class ItemAPIController {
         return new ResponseEntity<>(items,HttpStatus.OK);
     }
 
+//    //신규 top 10 아이템 조회
+//    @GetMapping("/recent")
+//    public ResponseEntity<List<ItemResponseDto>> getRecentItems(){
+//        List<ItemResponseDto> recentItems = itemService.getRecentItems();
+//
+//        return new ResponseEntity<>(recentItems, HttpStatus.OK);
+//    }
+
+
 }

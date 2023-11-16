@@ -123,7 +123,7 @@ logging:
 #
 #  jpa:
 #    hibernate:
-#      ddl-auto: update
+#      ddl-auto: create
 #    properties:
 #      hibernate:
 #        format_sql: true
@@ -135,4 +135,4 @@ logging:
 #  level:
 #    org.hibernate.SQL: debug
 #
-#
+

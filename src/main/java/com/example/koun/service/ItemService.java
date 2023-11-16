@@ -9,6 +9,7 @@ import com.example.koun.dto.ItemResponseDto;
 //import com.example.koun.dto.ItemUpdateRequestDto;
 import com.example.koun.repository.ItemRepository;
 
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -17,6 +18,8 @@ import java.util.stream.Collectors;
 
 import com.example.koun.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -110,6 +113,18 @@ public class ItemService {
 
         return itemResponseDtos;
     }
+
+// //   신규 top10 아이템 조회
+//    @Transactional(readOnly = true)
+//    public List<ItemResponseDto> getRecentItems() {
+//        List<Item> items= itemRepository.findTop10ByOrderByUploadTimeDesc((Pageable) PageRequest.of(0, 10));
+//        List<ItemResponseDto> itemResponseDtos = new ArrayList<>();
+//        for(Item item : items){
+//            ItemResponseDto dto = new ItemResponseDto(item);
+//            itemResponseDtos.add(dto);
+//        }
+//        return itemResponseDtos;
+//    }
 
 
 

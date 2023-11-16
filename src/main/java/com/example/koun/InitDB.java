@@ -53,21 +53,36 @@ public class InitDB {
             LocalDateTime dateTime1 = LocalDateTime.parse("2023-08-26 18:00", formatter);
             LocalDate uploadTime1 = LocalDate.parse("2023-08-17", dateFormatter);
             LocalDateTime dateTime2 = LocalDateTime.parse("2023-10-17 18:00", formatter);
-            LocalDate uploadTime2 = LocalDate.parse("2023-08-16", dateFormatter);
+            LocalDate uploadTime2 = LocalDate.parse("2023-11-16", dateFormatter);
             LocalDateTime dateTime3 = LocalDateTime.parse("2023-08-25 18:00", formatter);
-            LocalDate uploadTime3 = LocalDate.parse("2023-08-18", dateFormatter);
+            LocalDate uploadTime3 = LocalDate.parse("2023-11-15", dateFormatter);
             LocalDateTime dateTime4 = LocalDateTime.parse("2023-09-09 18:00", formatter);
-            LocalDate uploadTime4 = LocalDate.parse("2023-08-15", dateFormatter);
+            LocalDate uploadTime4 = LocalDate.parse("2023-11-14", dateFormatter);
             LocalDateTime dateTime5 = LocalDateTime.parse("2023-09-02 18:00", formatter);
-            LocalDate uploadTime5 = LocalDate.parse("2023-08-19", dateFormatter);
+            LocalDate uploadTime5 = LocalDate.parse("2023-11-17", dateFormatter);
             LocalDateTime dateTime6 = LocalDateTime.parse("2023-10-03 18:00", formatter);
-            LocalDate uploadTime6 = LocalDate.parse("2023-08-15", dateFormatter);
+            LocalDate uploadTime6 = LocalDate.parse("2023-11-13", dateFormatter);
             LocalDateTime dateTime7 = LocalDateTime.parse("2023-09-12 18:00", formatter);
-            LocalDate uploadTime7 = LocalDate.parse("2023-08-18", dateFormatter);
+            LocalDate uploadTime7 = LocalDate.parse("2023-11-16", dateFormatter);
             LocalDateTime dateTime8 = LocalDateTime.parse("2023-09-09 18:00", formatter);
-            LocalDate uploadTime8 = LocalDate.parse("2023-08-17", dateFormatter);
+            LocalDate uploadTime8 = LocalDate.parse("2023-11-15", dateFormatter);
             LocalDateTime dateTime9 = LocalDateTime.parse("2023-08-25 18:00", formatter);
-            LocalDate uploadTime9 = LocalDate.parse("2023-08-09", dateFormatter);
+            LocalDate uploadTime9 = LocalDate.parse("2023-08-19", dateFormatter);
+
+            LocalDateTime dateTime10 = LocalDateTime.parse("2024-01-27 18:00", formatter);
+            LocalDate uploadTime10 = LocalDate.parse("2023-11-14", dateFormatter);
+
+            LocalDateTime dateTime11 = LocalDateTime.parse("2023-11-24 18:00", formatter);
+            LocalDate uploadTime11 = LocalDate.parse("2023-11-13", dateFormatter);
+
+            LocalDateTime dateTime12 = LocalDateTime.parse("2023-12-30 18:00", formatter);
+            LocalDate uploadTime12 = LocalDate.parse("2023-11-13", dateFormatter);
+
+            LocalDateTime dateTime13 = LocalDateTime.parse("2023-12-22 18:00", formatter);
+            LocalDate uploadTime13 = LocalDate.parse("2023-11-16", dateFormatter);
+
+            LocalDateTime dateTime14 = LocalDateTime.parse("2023-12-23 18:00", formatter);
+            LocalDate uploadTime14 = LocalDate.parse("2023-11-15", dateFormatter);
 
 
             Item item = Item.builder()
@@ -189,6 +204,67 @@ public class InitDB {
                     .uploadTime(uploadTime9)
                     .build();
             itemRepository.save(item9);
+
+            Item item10 = Item.builder()
+                    .itemName("10CM WINTER CONCERT ‘9+1’")
+                    .artist("10CM")
+                    .venue("KSPO DOME")
+                    .dateTime(dateTime10)
+                    .ageRequirement("만 8세이상")
+                    .runningTime("120분")
+                    .post("https://ticketimage.interpark.com/Play/image/large/23/23015862_p.gif")
+                    .uploadTime(uploadTime10)
+                    .build();
+            itemRepository.save(item10);
+
+            Item item11 = Item.builder()
+                    .itemName("AKMU 2023 CONCERT ［AKMUTOPIA］")
+                    .artist("AKMU")
+                    .venue("경희대 평화의전당")
+                    .dateTime(dateTime11)
+                    .ageRequirement("만 7세이상")
+                    .runningTime("120분")
+                    .post("https://ticketimage.interpark.com/Play/image/large/23/23012636_p.gif")
+                    .uploadTime(uploadTime11)
+                    .build();
+            itemRepository.save(item11);
+
+            Item item12 = Item.builder()
+                    .itemName("2023 god’s MASTERPIECE - 부산")
+                    .artist("god")
+                    .venue("부산 벡스코 제1전시장")
+                    .dateTime(dateTime12)
+                    .ageRequirement("8세이상 관람가능")
+                    .runningTime("150분")
+                    .post("https://ticketimage.interpark.com/Play/image/large/23/23014112_p.gif")
+                    .uploadTime(uploadTime12)
+                    .build();
+            itemRepository.save(item12);
+
+            Item item13 = Item.builder()
+                    .itemName("싸이 올나잇스탠드 2023 〈흰눈싸이로〉")
+                    .artist("싸이")
+                    .venue("KSPO DOME")
+                    .dateTime(dateTime13)
+                    .ageRequirement("전체관람가")
+                    .runningTime("300분")
+                    .post("https://ticketimage.interpark.com/Play/image/large/23/23016343_p.gif")
+                    .uploadTime(uploadTime13)
+                    .build();
+            itemRepository.save(item13);
+
+            Item item14 = Item.builder()
+                    .itemName("2023 CRUSH CONCERT ")
+                    .artist("크러쉬")
+                    .venue("잠실실내체육관")
+                    .dateTime(dateTime14)
+                    .ageRequirement("만 7세이상")
+                    .runningTime("150분")
+                    .post("https://ticketimage.interpark.com/Play/image/large/23/23015513_p.gif")
+                    .uploadTime(uploadTime14)
+                    .build();
+            itemRepository.save(item14);
+
 
 
             User user = User.builder()
