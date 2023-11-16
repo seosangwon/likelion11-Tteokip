@@ -268,7 +268,7 @@ public class InitDB {
             itemRepository.save(item13);
 
             Item item14 = Item.builder()
-                    .itemName("2023 CRUSH CONCERT ")
+                    .itemName("2023 CRUSH CONCERT")
                     .artist("크러쉬")
                     .venue("잠실실내체육관")
                     .dateTime(dateTime14)

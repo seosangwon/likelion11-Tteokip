@@ -36,9 +36,8 @@ public class JwtUtil {
     private static final String SECRET_KEY = "koun1234";  // 이 키는 안전한 곳에 저장되어야 하며, 변경될 수 있습니다.
 
     // 토큰 만료 시간 (예: 15분)
-    private static final long ACCESS_EXPIRATION_TIME = 900_000;  // 15 * 60 * 1000
+    private static final long ACCESS_EXPIRATION_TIME = 3600_000;  // 60 * 60 * 1000
     private static final long REFRESH_EXPIRATION_TIME = 86_400_000;  // 하루
-
     public String generateRefreshToken(UserSaveResponseDto user) {
         // 사용자의 기본 정보를 포함한 리프레시 토큰을 생성합니다.
         String roleType = user.getRoleType().toString();

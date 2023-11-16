@@ -51,9 +51,11 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
         response.setStatus(HttpStatus.OK.value());
         ObjectMapper objectMapper = new ObjectMapper();
         String jsonResponse = objectMapper.writeValueAsString(tokenResponseDto);
-        response.getWriter().write(jsonResponse);
 
-        response.sendRedirect("/main.html");
+        response.getWriter().write(jsonResponse);
+      //  response.sendRedirect("/main.html");
+
+
 
 
     }
