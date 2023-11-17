@@ -28,15 +28,23 @@ public class LikeService {
         Long itemId = likeRequestDto.getItemId();
         Long userId = likeRequestDto.getUserId();
 
-        User user = userRepository.findById(userId).orElseThrow(() -> new IllegalArgumentException("해당 유저가 없습니다"));
-        Item item = itemRepository.findById(itemId).orElseThrow(() -> new IllegalArgumentException("해당 아이템이 없습니다"));
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new IllegalArgumentException("해당 유저가 없습니다"));
+        Item item = itemRepository.findById(itemId)
+                .orElseThrow(() -> new IllegalArgumentException("해당 아이템이 없습니다"));
 
+        List<Like> likes = user.getLikes();
 
-        Like like = likeRequestDto.toEntity(user, item);
+        boolean alreadyLiked = likes.stream()
+                .anyMatch(like -> like.getItem().getId().equals(itemId));
 
-        return likeRepository.save(like).getId();
-
-
+        if (!alreadyLiked) {
+            Like like = likeRequestDto.toEntity(user, item);
+            return likeRepository.save(like).getId();
+        } else {
+            // 이미 좋아요를 누른 경우에 대한 처리
+            throw new IllegalStateException("이미 좋아요를 누른 아이템입니다.");
+        }
     }
 
 
