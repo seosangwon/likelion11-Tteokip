@@ -72,7 +72,7 @@ public class SecurityConfig {
                         .requestMatchers(new AntPathRequestMatcher("/login")).permitAll()
                         .requestMatchers(new AntPathRequestMatcher("/detail.html")).permitAll()
                         .requestMatchers(new AntPathRequestMatcher("/raffle.html")).permitAll()
-                  //      .requestMatchers(new AntPathRequestMatcher("/html/mypage.html")).hasAuthority("ROLE_USER")
+                 //       .requestMatchers(new AntPathRequestMatcher("/html/mypage.html")).hasAuthority("ROLE_USER")
                         .requestMatchers(new AntPathRequestMatcher("/resultPopup.html")).hasAuthority("ROLE_USER")
                   //      .requestMatchers(new AntPathRequestMatcher("/api/admin/**")).hasAuthority("ROLE_ADMIN")
                         .anyRequest().permitAll()
