@@ -18,7 +18,7 @@ public class LikeApiController {
     private final LikeService likeService;
 
 
-    //좋아요 생성
+  //  좋아요 생성
     @PostMapping("/create")
     public ResponseEntity<Long> createLike(@RequestBody LikeRequestDto requestDto){
         Long likeId = likeService.joinLike(requestDto);

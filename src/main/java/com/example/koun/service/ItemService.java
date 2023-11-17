@@ -92,8 +92,8 @@ public class ItemService {
 
     //아이템 이름 으로 조회
     @Transactional(readOnly = true)
-    public ItemResponseDto findItemsByName(String itemName){
-        Item item = itemRepository.findByItemName(itemName).orElseThrow(()-> new IllegalArgumentException("아이템이 없습니다"));
+    public ItemResponseDto findItemsByName(String itemName) {
+        Item item = itemRepository.findByItemName(itemName).orElseThrow(() -> new IllegalArgumentException("아이템이 없습니다"));
         return new ItemResponseDto(item);
 
 
@@ -124,6 +124,7 @@ public class ItemService {
 
         for (Like like : likes) {
             Item item = like.getItem();
+            System.out.println(item.getItemName()+ item.getId());
             ItemResponseDto dto = new ItemResponseDto(item);
             dto.setUserLike(true);
 
@@ -153,8 +154,6 @@ public class ItemService {
     }
 
 
-
-
     // 신규 top1~10 조회
     public Page<ItemResponseDto> getNewTopLikes(Pageable pageable) {
         Page<Item> newTopItems = itemRepository.findNewTopLikedItems(pageable);
@@ -167,25 +166,6 @@ public class ItemService {
     }
 
 
-
-
-
-
-
-
-
-
-// //   신규 top10 아이템 조회
-//    @Transactional(readOnly = true)
-//    public List<ItemResponseDto> getRecentItems() {
-//        List<Item> items= itemRepository.findTop10ByOrderByUploadTimeDesc((Pageable) PageRequest.of(0, 10));
-//        List<ItemResponseDto> itemResponseDtos = new ArrayList<>();
-//        for(Item item : items){
-//            ItemResponseDto dto = new ItemResponseDto(item);
-//            itemResponseDtos.add(dto);
-//        }
-//        return itemResponseDtos;
-//    }
 
 
 }

@@ -17,10 +17,6 @@ public class ItemController {
     private final ItemService itemService;
     private final SectionService sectionService;
 
-    @GetMapping("/register")
-    public String registerForm() {
-        return "ItemAndSection";
-    }
 
     @PostMapping("/register/save")
     public String saveSection(ItemRequestDto requestDto) {

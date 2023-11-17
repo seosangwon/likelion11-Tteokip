@@ -11,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -30,12 +31,15 @@ public class LikeService {
         User user = userRepository.findById(userId).orElseThrow(() -> new IllegalArgumentException("해당 유저가 없습니다"));
         Item item = itemRepository.findById(itemId).orElseThrow(() -> new IllegalArgumentException("해당 아이템이 없습니다"));
 
+
         Like like = likeRequestDto.toEntity(user, item);
 
         return likeRepository.save(like).getId();
 
 
     }
+
+
 
     // 좋아요 삭제
     public void deleteLike(Long likeId) {
