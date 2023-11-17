@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cancel</title>
+    <link rel="stylesheet" href="../css/cancel.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+<div id="cancelpopup" class="filter">
+    <div class="contentWrapper">
+        <div class="header">
+            <div class="headerLeft">
+                <img src="../img/logo.png" alt="logo" class="logo">
+                <h2 class="canceltext">취소하기</h2>
+            </div>
+            <div class="headerRight">
+                <button class="XButton" onclick="closePopup('#cancelpopup')">X</button>
+            </div>
+        </div>
+        <div class="contents">
+            <div class="info">
+                <p class="title">공연 정보</p>
+                <h4 class="infoText" id="concert_info">라우브 내한공연(Lauv in Seoul)</h4>
+            </div>
+            <div class="info">
+                <p class="title">공연 일시</p>
+                <h4 class="infoText" id="concert_date">2023.06.17(토) 오후 8시</h4>
+            </div>
+            <div class="info">
+                <p class="title">좌석 정보</p>
+                <h4 class="infoText" id="seat_info">스텐딩 가</h4>
+            </div>
+            <div class="info">
+                <p class="title">취소가능 날짜</p>
+                <div class="infoWrapper">
+                    <h4 class="infoText" id="cancel_date">2023.06.17(토)</h4>
+                    <h4 class="infoText" id="cancel_time">오후 8시</h4>
+                    <h4 class="infoText">까지</h4>
+                </div>
+            </div>
+            <div class="info">
+                <p class="title">재예매가능 날짜</p>
+                <div class="infoWrapper">
+                    <h4 class="infoText" id="reapply_date">2023.06.17(토)</h4>
+                    <h4 class="infoText" id="reapply_time">오후 8시</h4>
+                    <h4 class="infoText">까지</h4>
+                </div>
+            </div>
+        </div>
+        <div class="bottomBox">
+            <div class="cancel_button">
+                <button class="cancelBtn" onclick="movetoPopup('#cancelpopup','#cancelpopup2')">결제취소</button>
+            </div>
+            <div class="alert">
+                <p class="alertText-ver.end"> <!--ver.마다 js 다르게 먹이기-->
+                    해당 공연은 응모가 종료된 공연입니다.
+                </p>
+                <p class="alertText-ver.end">
+                    결제를 취소할 경우 다시 응모하실 수 없습니다.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--여기부터 수수료 안내-->
+<div id="cancelpopup2" class="hide">
+    <div class="contentWrapper">
+        <div class="header">
+            <div class="headerLeft">
+                <img src="../img/logo.png" alt="logo" class="logo">
+                <h2 class="canceltext" id="canceltext">취소하기</h2>
+            </div>
+            <div class="headerRight">
+                <button class="XButton" onclick="closePopup('#cancelpopup2')">X</button>
+            </div>
+        </div>
+        <div class="titles">
+            <div class="cancelnotice">
+                <img src="../img/clover.png" alt="clover">
+                <div class="noticeTitle">취소 수수료 안내</div>
+            </div>
+        </div>
+        <div class="tablecontents">
+            <div>
+                <div class="holeTableWrap">
+                    <div class="head">
+                        <div class="inhead">구분</div>
+                        <div class="inhead">취소수수료</div>
+                        <div class="inhead">비고</div>
+                    </div>
+                    <div class="tableWrap">
+                        <div class="division">
+                            <p class="noticecontent">당첨 후 7일 이내</p>
+                            <p class="noticecontent">당첨 후 8일~관람일 10일 전</p>
+                            <p class="noticecontent">관람일 9일 전~3일 전</p>
+                            <p class="noticecontent">관람일 2일 전 ~ 1일 전</p>
+                        </div>
+                        <div class="amount">
+                            <p class="noticecontent">없음</p>
+                            <p class="noticecontent">티켓 금액의 10% 이내</p>
+                            <p class="noticecontent">티켓 금액의 20%</p>
+                            <p class="noticecontent">티켓 금액의 30%</p>
+                        </div>
+                        <div class="notice">
+                            <p class="realnotice">*예매 당일에 취소하는 경우 이외에는 예매수수료가 환불되지 않음</p>
+                            <p class="realnotice">*예매 후 7일 이내라도 취소시점이 공연일로부터 10일 이내라면 그에 해당하는 취소수수료 부과</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="othernotice">
+                    <div>*취소 시 예매수수료는 예매 당일 밤 12시 이전까지 환불되며, 그 이후 기간에는 환불되지 않습니다.</div>
+                    <div>*웹 취소 가능시간 이후에는 취소가 불가합니다.</div>
+                    <div>단, 관람일 당일 취소 가능한 상품의 경우 관람일 당일 취소시에는 티켓금액의 90%가 과금됩니다.</div>
+                    <div>*상품 특성에 따라 취소 수수료 정책이 달라질 수 있습니다.(각 상품 예매시 취소수수료 확인)</div>
+                </div>
+            </div>
+        </div>
+        <div class="bottomBox2">
+            <div class="cancel_button">
+                <button class="cancelBtn" id = "last_cancel" onclick="movetoPopup('#cancelpopup2','#cancelpopup3')">결제취소</button>
+            </div>
+            <div class="alert">
+                <p class="alertText"> <!--ver.마다 js 다르게 먹이기 -- flag?-->
+                    해당 공연은 응모가 종료된 공연입니다.
+                </p>
+                <p class="alertText">
+                    결제를 취소할 경우 다시 응모하실 수 없습니다.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--
+취소 완료 팝업
+-->
+<div id="cancelpopup3" class="hide">
+    <div class="contentWrapper">
+        <div class="header">
+            <div class="headerLeft">
+                <img src="../img/logo.png" alt="logo" class="logo">
+                <h2 class="canceltext">취소하기</h2>
+            </div>
+            <div class="headerRight">
+<!--
+                <button class="XButton" onclick="closePopup3()">X</button>
+-->
+            </div>
+        </div>
+        <div class="donecontents">
+            <img src="../img/done.png" alt="done" class="doneimg">
+            <p class="donemention">응모취소가 완료되었습니다.</p>
+        </div>
+        <div class="bottomBox3">
+            <div class="cancel_button">
+                <button class="cancelBtn" onclick="closePopup('#cancelpopup3')">확인</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="../js/cancel.js"></script>
+
+</body>
+</html>

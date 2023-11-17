@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="../css/login.css" type="text/css">
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+
+<main>
+  <div class="try">
+    <img src="../img/logo.png" alt="koun" width="130px" id="logo">
+    <section class="login-form" >
+
+      <div class="login-input-container ">
+        <input type="text"  name="username" class="account" id="loginMail" placeholder="이메일">
+      </div>
+
+      <div class="login-input-container">
+        <input type="password" name="password" class="account" id="loginPw" placeholder="비밀번호">
+      </div>
+
+      <button class="login" type="submit" id="loginBtn">로그인</button>
+      <div class="footer">
+        <p><a href="/oauth2/authorization/kakao">카카오 계정으로 로그인</a></p>
+        <p class="signup" ><a href="signup.html">회원가입</a></p>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<script src="../js/login.js"></script>
+</body>
+</html>

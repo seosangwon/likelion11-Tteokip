@@ -1,0 +1,287 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Pretendard';
+    list-style: none;
+}
+
+:root {
+
+    /*Color*/
+    --color-main-green: #26DDB1;
+    --color-main-gray: #8C9091;
+    --color-main-white: #FFFFFF;
+    --color-main-black: #3D3B3B;
+
+    /*Font size*/
+    --font-large: 48px;
+    --font-semi-large: 30px;
+    --font-medium: 28px;
+    --font-regular: 18px;
+    --font-small: 16px;
+    --font-micro: 14px;
+}
+
+a {
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+#cancelpopup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .7);
+    z-index: 1;
+}
+
+#cancelpopup.hide {
+    display: none;
+}
+
+#cancelpopup.filter {
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+
+#cancelpopup2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .7);
+    z-index: 1;
+}
+
+#cancelpopup2.hide {
+    display: none;
+}
+
+#cancelpopup2.filter {
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+
+#cancelpopup3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .7);
+    z-index: 1;
+}
+
+#cancelpopup3.hide {
+    display: none;
+}
+
+#cancelpopup3.filter {
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+.contentWrapper {
+    background-color: var(--color-main-white);
+    width: 700px;
+    height: 700px;
+}
+
+.header_cancel {
+    margin: 30px;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.headerLeft {
+    display: flex;
+}
+
+.logo {
+    width: 110px;
+    height: auto;
+    object-fit: contain;
+}
+
+.canceltext {
+    margin: 10px;
+    padding-top: 10px;
+    color: var(--color-main-green);
+    font-size: var(--font-medium);
+    font-weight: normal;
+}
+
+.headerRight {
+    display: flex;
+}
+
+.XButton {
+    background-color: var(--color-main-white);
+    border: none;
+    font-size: 25px;
+    font-weight: normal;
+    color: var(--color-main-gray);
+    width: 30px;
+}
+
+.XButton:hover {
+    color: var(--color-main-black);
+}
+
+.contents {
+    margin: 50px;
+}
+
+
+.info {
+    margin: 10px;
+}
+
+.title {
+    margin: 5px 0;
+    color: var(--color-main-gray);
+}
+
+.infoText {
+    font-size: large;
+    font-weight: 500;
+}
+
+.infoWrapper {
+    display: flex;
+}
+
+.bottomBox {
+    margin: 30px;
+    padding-top: 100px;
+}
+
+.cancel_button {
+    display: flex;
+    justify-content: center;
+}
+
+
+.cancelBtn {
+    margin: 10px;
+    width: 90%;
+    height: 40px;
+    background-color: var(--color-main-white);
+    border: 1px solid var(--color-main-green);
+    color: var(--color-main-green);
+    font-size: var(--font-small);
+    border-radius: 7px;
+}
+
+.cancelBtn:hover {
+    background-color: var(--color-main-green);
+    border: 1px solid var(--color-main-white);
+    color: var(--color-main-white);
+}
+
+.alert {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 100px;
+    justify-content: center;
+    color: red;
+}
+
+.titles {
+    margin: 0 50px;
+}
+
+.tablecontents {
+    margin: 11px 50px;
+}
+
+
+.cancelnotice {
+    display: flex;
+}
+
+.holeTableWrap {
+    border: 1px solid var(--color-main-green);
+
+}
+
+.head {
+    display: flex;
+    padding: 20px 0;
+    justify-content: space-around;
+    border: 1px solid var(--color-main-green);
+
+}
+
+.inhead {
+    font-weight: bold;
+}
+
+
+.division, .amount, .notice {
+    flex: 1;
+}
+
+.noticecontent {
+    display: flex;
+    height: 50px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--color-main-green);
+}
+
+.realnotice {
+    padding: 18px 20px;
+    border: 1px solid var(--color-main-green);
+
+}
+
+.tableWrap {
+    display: flex;
+    justify-content: space-around;
+}
+
+
+.division {
+    display: grid;
+}
+
+.othernotice {
+    margin: 10px 0;
+}
+
+.donecontents {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.doneimg {
+    margin: 30px 130px;
+}
+
+.donemention {
+    text-align: center;
+    margin: 10px;
+    font-weight: bold;
+}
+
+.bottomBox3 {
+    padding-top: 80px;
+}

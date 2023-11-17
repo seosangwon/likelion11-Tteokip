@@ -1,0 +1,107 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Pretendard';
+    list-style: none;
+}
+
+main {
+    display: flex;
+    /* 가로를 기준으로 가운데 정렬 */
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    box-sizing: border-box;
+    width: 100vw;
+}
+
+
+.try {
+    border-style: solid;
+    border-width: 1px;
+    padding: 60px 60px;
+    border-radius: 44px;
+    border-color: #ebebeb;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+:root {
+
+    /*Color*/
+    --color-main-green: #26DDB1;
+    --color-main-gray: #8C9091;
+    --color-main-white: #FFFFFF;
+    --color-main-black: #3D3B3B;
+
+    /*Font size*/
+    --font-large: 48px;
+    --font-semi-large: 30px;
+    --font-medium: 28px;
+    --font-regular: 18px;
+    --font-small: 16px;
+    --font-micro: 14px;
+}
+
+.resultTitle {
+    color: #26ddb1;
+    font-size: x-large;
+    padding-top: 14px;
+    margin-left: 5px;
+}
+
+.logoImg {
+    width: 100px;
+    height:auto;
+    object-fit: cover;
+}
+
+.ment {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #26ddb1;
+    font-size: xx-large;
+    border: 1px #26DDB1;
+}
+
+.resultimg {
+    width: 400px;
+    height: 160px;
+    object-fit: cover;
+}
+
+.concertInfo {
+    margin: 10px 40px;
+}
+
+.title {
+    margin: 0;
+    font-size: small;
+    color: #b4b4b4;
+}
+
+.content {
+    font-size: large;
+    margin: 0;
+
+}
+
+body {
+    overflow-x: hidden;
+}
+
+
+button{
+    height: 50px;
+    width: 300px;
+    padding: 3px 15px;
+    border: 1px solid var(--color-main-green);
+    border-radius: 10px;
+    background-color: #26ddb1;
+    color: white;
+    font-size: large;
+}

@@ -1,0 +1,173 @@
+main {
+    display: flex;
+    /* 가로를 기준으로 가운데 정렬 */
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    box-sizing: border-box;
+    width: 100vw;
+}
+
+
+
+@font-face {
+    font-family: 'SEBANG_Gothic_Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2104@1.0/SEBANG_Gothic_Bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+.btn_container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.register_btn{
+
+    font-family: 'Pretendard-Regular';
+    font-weight: 400;
+    font-size: 17px;
+    color: white;
+    display: block;
+    margin: 40px auto;
+}
+
+h1 {
+    font-family: 'Pretendard-Regular';
+    text-align: center;
+    color: #4C87DA;
+    font-size: 40px;
+    margin-bottom: 50px;
+}
+
+.social-login-title {
+    font-family: 'Pretendard-Regular';
+    font-weight: 300;
+    color: #535c6a;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.social-login-container {
+    font-family: 'Pretendard-Regular';
+    width: 200px;
+    height: 50px;
+    margin: 0px auto;
+}
+
+.social-login-container > img {
+    width: 40px;
+    height: 40px;
+    margin-left: 25px;
+    margin-right: 25px;
+}
+
+.login-input-container {
+    font-family: 'Pretendard-Regular';
+    display: flex;
+    /* 세로 가운데 정렬 */
+    align-items: center;
+
+    width: 350px;
+    height: 54px;
+    margin: 30px auto;
+
+    border-bottom: solid 1px #e9e9e9;
+
+}
+
+.login-input-container p {
+    font-family: 'Pretendard-Regular';
+    font-weight: 300;
+    font-size: 16px;
+    margin-left: 26px;
+    margin-right: 20px;
+
+}
+
+.login-input-container input {
+    font-family: 'Pretendard-Regular';
+    font-weight: 100;
+    width: 100%;
+    border: none;
+    font-size: 16px;
+
+}
+
+.login-input-container input:focus {
+    outline: none;
+}
+
+.login {
+    font-family: 'Pretendard-Regular';
+    font-weight: 400;
+    font-size: 17px;
+    color: white;
+    display: block;
+    margin: 80px auto 0px auto;
+}
+
+.btn_container{
+    margin-top : -15px;
+}
+
+.account {
+    font-family: 'Pretendard-Regular';
+    border-bottom: solid 1px #e9e9e9;
+}
+
+button {
+    font-family: 'Pretendard-Regular';
+    background-color: #26DDB1;
+    border-style: none;
+    color:white;
+    width: 290px;
+    height: 46px;
+    border-radius: 10px;
+}
+
+
+
+.try {
+    border-style: solid;
+    border-width: 1px;
+    padding: 60px 60px;
+    border-radius: 44px;
+    border-color: #ebebeb;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+.footer {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.signup {
+    padding-left: 7px;
+    margin-left: 7px;
+    border-left: 1px solid #26DDB1;
+}

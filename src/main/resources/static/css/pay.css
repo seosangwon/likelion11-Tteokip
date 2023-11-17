@@ -1,0 +1,202 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Pretendard';
+    list-style: none;
+}
+
+:root {
+
+    /*Color*/
+    --color-main-green: #26DDB1;
+    --color-main-gray: #8C9091;
+    --color-main-white: #FFFFFF;
+    --color-main-black: #3D3B3B;
+
+    /*Font size*/
+    --font-large: 48px;
+    --font-semi-large: 30px;
+    --font-medium: 28px;
+    --font-regular: 18px;
+    --font-small: 16px;
+    --font-micro: 14px;
+}
+
+/*nav*/
+
+.navbar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0 10px;
+    color: var(--color-main-gray);
+    border: 1px solid var(--color-main-white);
+    box-shadow: 0 2px 2px -2px #b4b4b4;
+}
+
+.logoImg {
+    width: 110px;
+    height:auto
+}
+
+.navbar__menu {
+    margin-left: 20%;
+    display: flex;
+}
+
+.navbar__menu li:hover {
+    color: var(--color-main-black);
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.navbar__menu__item {
+    font-size: var(--font-small); /*micro->small로 변경*/
+    padding: 3px 10px;
+}
+
+/*header_progression*/
+
+.header {
+    display: flex;
+    justify-content: flex-end;
+    padding: 3% 12%;
+}
+
+.prog_nav {
+    justify-content: space-around;
+}
+
+.progitemWrapper {
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+    margin: 0 10px;
+    padding-top: 10px;
+    font-size: var(--font-micro);
+    color: var(--color-main-gray);
+}
+
+.progitemText {
+    padding: 0 10px;
+    list-style: none;
+}
+
+#current {
+    color: var(--color-main-black);
+    font-weight: bold;
+}
+
+.bar {
+    padding: 0 10px;
+    list-style: none;
+}
+
+main{
+    display: flex;
+    margin: 0 12%;
+    justify-content: center;
+}
+
+.contents-box {
+    border-radius: 34px;
+    background: #F9F9F9;
+    width: 80%;
+    height: 500px;
+    padding: 40px;
+    display: flex;
+    justify-content: space-around;
+}
+
+section {
+    padding: 30px;
+    width: 40%;
+    background-color: #ffffff;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+
+.pay-btn {
+    width: 100%;
+    height: 48px;
+    border-radius: 8px;
+    background-color: var(--color-main-green);
+    color: var(--color-main-white);
+    font-size: var(--font-regular);
+    margin-top: 30px;
+    border: 0;
+}
+
+.input{
+    position: relative;
+    width: 100%;
+    margin-right: 20px;
+}
+
+
+input {
+    font-size: 15px;
+    color: #222222;
+    width: 100%;
+    border: none;
+    border-bottom: solid #aaaaaa 1px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    position: relative;
+    background: none;
+    z-index: 5;
+    margin-top: 10px;
+}
+
+input::placeholder { color: #aaa }
+input:focus { outline: none; }
+
+span {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0%;  /* right로만 바꿔주면 오 - 왼 */
+    background-color: #666;
+    width: 0;
+    height: 2px;
+    border-radius: 2px;
+    transition: 0.5s;
+}
+
+label {
+    position: absolute;
+    color: #aaa;
+    left: 10px;
+    font-size: 16px;
+    bottom: 8px;
+    transition: all .2s;
+}
+
+input:focus ~ label, input:valid ~ label {
+    font-size: 12px;
+    bottom: 32px;
+    color: var(--color-main-green);
+    font-weight: bold;
+}
+
+input:focus ~ span, input:valid ~ span {
+    width: 100%;
+}
+
+h2 {
+    color: #000;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+}
+
+h3 {
+    color: #000;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    margin-top: 10px;
+}

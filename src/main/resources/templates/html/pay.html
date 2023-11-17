@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../css/pay.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+    <title>pay</title>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="navbar__logo">
+      <img src="../img/logo.png" alt="logo" class="logoImg" onclick="moveMain()">
+    </div>
+    <ul class="navbar__menu">
+      <li class="navbar__menu__item">로그아웃</li>
+      <li class="navbar__menu__item" onclick="moveMypage()">결과확인</li>
+      <li class="navbar__menu__item" onclick="moveMypage()">마이페이지</li>
+    </ul>
+  </nav>
+  <div id="header" class="header">
+    <div id="prog_menu" class="prog_nav">
+      <ul class="progitemWrapper">
+        <li class="progitemText">01.상세정보</li>
+        <li class="bar"> - </li>
+        <li class="progitemText" >02.좌석선택</li>
+        <li class="bar"> - </li>
+        <li class="progitemText" id="current">03.결제하기</li>
+      </ul>
+    </div>
+  </div>
+  <main>
+    <div class="contents-box">
+      <section>
+        <h2>주문/배송 정보</h2>
+        <h3>주문자</h3>
+        <div style="display: flex; justify-content: space-between; " >
+          <div class="input">
+            <input type="text" required>
+            <label>이름</label>
+            <span></span>
+          </div>
+          <div class="input">
+            <input type="text" required>
+            <label>전화번호</label>
+            <span></span>
+          </div>
+        </div>
+        <div class="input">
+          <input type="text" required>
+          <label>이메일</label>
+          <span></span>
+        </div>
+
+        <h3>배송지 정보</h3>
+        <div style="display: flex; justify-content: space-between;" >
+          <div class="input">
+            <input type="text" required>
+            <label>이름</label>
+            <span></span>
+          </div>
+          <div class="input">
+            <input type="text" required>
+            <label>전화번호</label>
+            <span></span>
+          </div>
+        </div>
+        <div class="input">
+          <input type="text" required>
+          <label>우편번호</label>
+          <span></span>
+        </div>
+        <div class="input">
+          <input type="text" required>
+          <label>주소</label>
+          <span></span>
+        </div>
+      </section>
+
+      <section>
+        <h2>주문 상품 정보</h2>
+        <p id="name">라우브 내한공연</p>
+        <p id="time">2023.08.31(목) 오후 6시</p>
+        <p id="count">총 2매</p>
+        <hr/>
+        <div style="display: flex; justify-content: flex-end"; align="right">
+          <div>
+            <h3>상품 가격</h3>
+            <h3>배송비</h3>
+          </div>
+          <div style="margin-left: 40px;">
+            <h3 id="price">320,000원</h3>
+            <h3>+ 3,000 원</h3>
+          </div>
+        </div>
+        <hr/>
+        <div style="display: flex; justify-content: flex-end ">
+          <h3>총 결제금액</h3>
+          <h3 style="margin-left: 40px; color:#26DDB1" id="total">323,000원</h3>
+        </div>
+        <button id="payBtn" class="pay-btn" onclick="getPay()">결제하기</button>
+
+      </section>
+    </div>
+  </main>
+
+  <script src="../js/pay.js"></script>
+
+</body>
+</html>

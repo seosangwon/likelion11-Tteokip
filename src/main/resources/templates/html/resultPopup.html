@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Result</title>
+  <link rel="stylesheet" href="../css/resultPopup.css" type="text/css">
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+<main>
+  <div class="try">
+    <img src="../img/logo.png" alt="koun" width="130px" onclick="moveMain()">
+    <div class="resultTitle">응모결과</div>
+
+
+    <div class="hide" id="success_result">
+      <img src="../img/result.png" class="resultimg" alt="result" width="300px">
+      <p class="ment">•Congratulation•</p>
+    </div>
+
+    <section class="login-form">
+
+      <div class="login-input-container ">
+        <div class="concertInfo" id="nameInfo">
+          <p class="title">공연정보</p>
+          <p class="content" id="item_name">라우브 내한공연 (Lauv in Seoul)</p>
+        </div>
+      </div>
+
+      <div class="login-input-container">
+        <div class="concertInfo" id="status/count">
+          <p class="title">응모결과/매수</p>
+          <p class="content" id="raffleStatus">당첨/1매</p>
+        </div>
+      </div>
+
+      <div class="login-input-container">
+        <div class="concertInfo" id="day/place">
+          <p class="title">공연일시</p>
+          <p class="content" id="time">2023.06.17(토) 오후 8시</p>
+        </div>
+      </div>
+
+      <div class="login-input-container">
+        <div class="concertInfo" id="section_name">
+          <p class="title">좌석 정보</p>
+          <p class="content" id="seat">스탠딩 가</p>
+        </div>
+      </div>
+
+    </section>
+    <div class="concertInfo">
+      <button onclick="moveMypage()">확인</button>
+    </div>
+  </div>
+</main>
+
+<script src="../js/resultPopup.js"></script>
+<script src="../js/mypage.js"></script>
+</body>
+</html>
